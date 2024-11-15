@@ -1,0 +1,58 @@
+\begin{enumerate}
+\item Let \(k = \ceil{\log_c(\epsilon/|x-y|)} + 1\) is finite. Notice that 
+    \begin{align*}
+        |f^{(k)}(x) - f^{(k)}(y)| &= c|f^{(k-1)}(x) - f^{(k-1)}(y)|\\
+        &= c^2|f^{(k-2)}(x) - f^{(k-2)}(y)|\\
+        &= \cdots\\
+        &= c^{k-1}|f(x) - f(y)|\\
+        &= c^k |x - y|\\
+        &\leq c^{\log_c(\epsilon/|x-y|)+1} |x-y|\\
+        &= c\epsilon\\
+        &< \epsilon.
+    \end{align*}
+
+\item Let \(f: \R \to \R\) s.t.
+    \[
+        f(x) = \frac{x-\sqrt{x^2+4}}{2}.
+    \]
+    (This is a branch of the hyperbola with \(y=x\) and \(y=0\) as asymptotes, the branch below both of them.)
+
+    Notice that \(f\) is increasing and concave. This is because
+    \begin{align*}
+        f'(x) &= \frac{1}{2} - \frac{2x}{4\sqrt{x^2+4}}\\
+        &= \frac{1}{2} - \frac{x}{2\sqrt{x^2+4}}\\
+        &= \frac{\sqrt{x^2+4}-x}{2\sqrt{x^2+4}}\\
+        &> \frac{\sqrt{x^2}-x}{2\sqrt{x^2+4}}\\
+        &= \frac{|x|-x}{2\sqrt{x^2+4}}\\
+        &\geq 0
+    \end{align*}
+    and so \(f'(x)>0\), and
+    \begin{align*}
+        f''(x) &= -\frac{1}{2} \cdot \frac{\sqrt{x^2+4} \cdot 1 - x \cdot \frac{1}{2} \cdot 2x \cdot \frac{1}{\sqrt{x^2+4}}}{x^2+4}\\
+        &= -\frac{\sqrt{x^2+4} - \frac{x^2}{\sqrt{x^2+4}}}{2(x^2+4)}\\
+        &= -\frac{(x^2+4) - x^2}{2(x^2+4)\sqrt{x^2+4}}\\
+        &= -\frac{2}{(x^2+4)\sqrt{x^2+4}}\\
+        &< 0,
+    \end{align*}
+    and so \(f''(x) < 0\).
+    
+    Also, notice that
+    \begin{align*}
+        f'(x) - 1 &= \frac{\sqrt{x^2 + 4} -x }{2\sqrt{x^2 + 4}} - 1\\
+        &= - \frac{\sqrt{x^2 + 4} +x }{2\sqrt{x^2 + 4}}\\
+        &<0,
+    \end{align*}
+    so we can show that \(f'(x) < 1\).
+    
+    W.L.O.G. let \(x > y\), since \(f''(y) < 0\), we will know that
+    \[
+        f(x) - f(y) < (x - y)f'(y) < (x-y)
+    \]
+    and so \(|f(x) - f(y)| < |x-y|\).
+    
+    Notice at the same time,
+    \[
+    f(x) - x = -\frac{x+\sqrt{x^2+4}}{2} < 0
+    \]
+    so there does not exist \(x\) s.t. \(f(x) = x\).
+\end{enumerate}
