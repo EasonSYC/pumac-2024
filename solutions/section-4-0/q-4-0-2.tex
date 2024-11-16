@@ -1,8 +1,48 @@
-To show that $f(K)$ is compact given $f$ is a contraction and $K$ is compact, we show that $f(K)$ is closed and bounded.
+To show that \(f(K)\) is compact given \(f\) is a contraction and \(K\) is compact, we show that \(f(K)\) is closed and bounded.
 
 \begin{itemize}
-\item $f(K)$ is bounded: since $K$ is bounded, there exists some $r > 0$ s.t. $K \subset B_{(0, \ldots, 0)} (r)$. In other words, for all $x \in K$, $|x| < r$ .
+    \item \textbf{\(f(K)\) is bounded.} Since \(K\) is bounded, there exists some \(r > 0\) s.t. \(K \subset B_{(0, \ldots, 0)} (r)\). In other words, for all \(x \in K\), \(|x - (0, \ldots, 0)| < r\) .
+        
+    Since \(f\) is a contraction, set \(y = (0, \ldots, 0)\), we will see that \(|f(x) - f((0, \ldots, 0))| = c|x - (0, \ldots, 0)| < cr\).
     
-    Since $f$ is a contraction, set $y = 0$, we will see that $|f(x)| = c|x| < cr$. Therefore, $f(K) \subset B_{(0, \ldots, 0)} (cr)$, which shows $f(K)$ is bounded.
-\item $f(K)$ is closed: since $K$ is closed, $\bar{K}$ is open.
+    By the triangular inequality, we have
+    \begin{align*}
+        |f(x) - (0, \ldots, 0)| &\leq |f(x) - f((0, \ldots, 0))| + |f((0, \ldots, 0)) - (0, \ldots, 0)|\\
+        &< cr + |f((0, \ldots, 0)) - (0, \ldots, 0)|.
+    \end{align*}
+    
+    Therefore, \(f(K) \subset B_{(0, \ldots, 0)} (cr + |f((0, \ldots, 0)) - (0, \ldots, 0)|)\), which shows \(f(K)\) is bounded.
+        
+    \item \textbf{\(f(K)\) is closed.} We would like to first prove the lemma that a set is closed if and only if all its limit points (a point that can be reached using a limit of a sequence of points within the set) is contained in the set.
+    \begin{itemize}
+        \item \textbf{If direction.} Suppose a set \(C\) contains all its limit points. Now suppose \(x \in \mathbb{R}^n \setminus C\). Then \(x\) must not be a limit point of \(C\). By the \(\epsilon-\delta\) definition of a limit, it must be true that there is an open neighbourhood of \(x\) (an open ball centred at \(x\)) that does not intersect with \(C\). (It is not a limit point means it is not arbitrarily close to \(C\).) For every \(x \in \mathbb{R}^n \setminus C\), say such ball is \(B_x(r_x)\).
+
+        Define that
+        \[
+            S = \bigcup_{x \in \R^n \setminus C} B_x (r_x).
+        \]
+        Obviously \(S \subset \R^n \setminus C\) by how we defined \(r_x\). At the same time \(\R^n\setminus C \subset S\) since \(x \in B_x(r_x) \subset S\). Therefore, \(S = \R^n \setminus C\) and we have shown that it is a union of open balls, therefore open, and therefore \(C\) being closed.
+        
+        \item \textbf{Only if direction.} Suppose \(C\) is closed. Then \(\mathbb{R}^n \setminus C\) is open. Suppose there is a limit point \(x \notin C\), and therefore \(x \in \mathbb{R}^n \setminus C\).
+
+        By the definition of an open set being a union of open balls, \(x\) must be within some open ball (say \(B_p(s)\) which is itself a subset of \(\R^n \setminus C\). It is not difficult to see that \(s > |x - p|\) by definition of an open ball, and from the triangular inequality that \(B_x(s - |x - p|) \subset B_p(s) \subset \R^n \setminus C\): for some point \(y\) s.t. \(|y - x| < s - |x - p|\),
+        \[|y - p| \leq |y - x| + |x - p| < s - |x - p| + |x - p| < s.\]
+    
+        Therefore for \(r = s - |x - p|\), \(B_x(r) \subset \R^n \setminus C\), and \(B_x(r) \cap C = \emptyset\), which contradicts with given that \(x\) is a limit point of \(C\) by considering \(\epsilon \leq r\) in the \(\epsilon-\delta\)-definition of a limit. Therefore \(C\) contains all its limit points.
+    \end{itemize}
+
+    We would also like to show that \(f\) is continuous. But this is straightforward since
+    \[
+        \lim_{x \to y} |f(x) - f(y)| = c |\lim_{x \to y} x - y| = 0
+    \]
+    which then implies that \(\lim_{x \to y} f(x) = f(y)\) which means \(f\) is continuous.
+
+    Now we are ready to start the proof. We would like to show that \(f(K)\) is closed by showing it contains all its limit points. Consider a limit point formed by \(\{f(x_i)\}_{i = 1}^{+\infty}\) where \(x_i \in K\). We must have
+    \[
+        \lim_{i \to +\infty} f(x_i) = f\left(\lim_{i \to +\infty}x_i\right).
+    \]
+
+    Since \(K\) is closed, \(K\) contains all its limit points, and therefore \(\lim_{i \to +\infty}x_i \in K\), and therefore \(\lim_{i \to +\infty} f(x_i) = f\left(\lim_{i \to +\infty}x_i\right) \in f(K)\), which shows that \(f(K)\) contains all its limit points, hence closed.
 \end{itemize}
+
+We have shown that given \(K\) is closed, \(f(K)\) is closed. We have also shown that given \(K\) is bounded, \(f(K)\) is bounded. Therefore, given \(K\) is compact, \(f(K)\) is compact.

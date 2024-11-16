@@ -1,1 +1,13 @@
-Please add the solution to solutions/section-2-0/q-2-0-1.tex.
+\begin{enumerate}
+    \item This is a \(\sigma\)-algebra, because
+    \begin{enumerate}
+        \item \(\emptyset \in \Sigma\),
+        \item \(X \setminus \emptyset = X \in \Sigma, X \setminus X = \emptyset \in \Sigma\),
+        \item \(X \cup \emptyset = X \in \Sigma\),
+        \item \(X \cap \emptyset = \emptyset \in \Sigma\).
+    \end{enumerate}
+    \item This is \textbf{not} a \(\sigma\)-algebra, because \(1 \in \Sigma\), but \(1 \notin \p(X)\), which implies \(\Sigma \not\subset \p(X)\) since \(\p(X)\) only contains subsets of \(X\) as members, and \(1\) is not a subset of \(X\).
+    \item This is a \(\sigma\)-algebra, because \(\{0, 1, 2, 3, 4\} = X\), \(\{0, 1\}\) and \(\{2, 3, 4\}\) are complements, \(\emptyset\) and \(X\) are complements. Therefore rules 1 and 2 are satisfied.
+    Unions with \(X\) are \(X \in \Sigma\), \(\{0, 1\} \cup \{2, 3, 4\} = X \in \Sigma\). Intersections with \(\emptyset\) are \(\emptyset \in \Sigma\), and \(\{0, 1\} \cap \{2, 3, 4\} = \emptyset \in \Sigma\).
+    \item This is \textbf{not} a \(\sigma\)-algebra, because \(\{1, 2\} \in \Sigma\), but \(X \setminus \{1, 2\} = \{0, 3, 4\} \notin \Sigma\).
+\end{enumerate}

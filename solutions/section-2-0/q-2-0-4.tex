@@ -1,1 +1,40 @@
-Please add the solution to solutions/section-2-0/q-2-0-4.tex.
+We define a series of sets \(\{D_i\}_{i = 1}^{+\infty}\) as follows:
+\begin{itemize}
+    \item \(D_1 = E_1\),
+    \item \(D_i = E_i \setminus \bigcup_{k = 1}^{i - 1} E_k\).
+\end{itemize}
+
+Clearly \(D_i \subset E_i\). Let \(i \neq j\), and W.L.O.G. let \(i < j\), where \(i, j \in \N\). We have
+\[
+D_i \subset E_i \subset \bigcup_{k = 1}^{j - 1}E_k, D_j = E_j \setminus \bigcup_{k = 1}^{j - 1}E_k,
+\]
+which implies \(D_i \cap D_j = \emptyset\). This means that \(\{D_i\}_{i = 1}^{+\infty}\) are pairwise disjoint.
+
+Let \(F = \bigcup_{i = 1}^{+\infty}D_i\). We claim that
+\[
+F = \bigcup_{i = 1}^{+\infty}E_i.
+\]
+
+\begin{itemize}
+    \item \(\bigcup_{i = 1}^{+\infty}E_i \subset F\). For any \(a \in \bigcup_{i = 1}^{\infty} E_i\), we must have \(a \in E_j\) for some natural number \(j\). Let \(k\) be the minimal of such \(j\) by well-ordering principle, i.e.
+    \[
+    a \in E_k, a \notin \bigcup_{i = 1}^{k - 1} E_i.
+    \]
+    This implies that \(a \in E_k \setminus \bigcup_{i = 1}^{n - 1} E_i = D_k\), which therefore means \(a \in \bigcup_{i = 1}^{+\infty}D_i = F\), and therefore
+    \[\bigcup_{i = 1}^{+\infty}E_i \subset F.\]
+
+    \item \(F \subset \bigcup_{i = 1}^{+\infty}E_i\). For any \(b \in F = \bigcup_{i = 1}^{+\infty} D_i\), \(b\) must be a member of \(D_k\) for some \(k \in \mathbb{N}\).
+
+    Since \(b \in D_k \subset E_k \subset \bigcup_{i = 1}^{+\infty}E_i\), this means that \(b \in F\), and therefore
+    \[F \subset \bigcup_{i = 1}^{+\infty}E_i.\]
+\end{itemize}
+
+Now, we can show that
+\begin{align*}
+    \mu\left(\bigcup_{i = 1}^{+\infty} E_i\right) = \mu(F) &= \mu\left(\bigcup_{i = 1}^{+\infty} D_i\right)\\
+    &= \sum_{i = 1}^{+\infty} \mu(D_i)\\
+    &\leq \sum_{i = 1}^{\infty} \mu(E_i),
+\end{align*}
+as desired.
+
+Note the equal sign on the second line arises because \(D_i\) are pairwise disjoint, and the less or equal sign on the third line arises because \(D_i \subset E_i\).

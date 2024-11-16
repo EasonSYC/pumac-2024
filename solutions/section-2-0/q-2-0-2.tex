@@ -1,1 +1,22 @@
-Please add the solution to solutions/section-2-0/q-2-0-2.tex.
+\begin{enumerate}
+    \item \(\Sigma = \p(X)\) is a \(\sigma\)-algebra because:
+    \begin{enumerate}
+        \item \(\emptyset \in \Sigma = \p(X)\),
+        \item \(X \setminus E_i \subset X \), so \(X \setminus E_i \in \p(X)\),
+        \item \(\bigcup_{i = 1}^{+\infty}E_i \subset X\), so \(\bigcup_{i = 1}^{+\infty}E_i \in \p(X)\),
+        \item \(\bigcap_{i = 1}^{+\infty}E_i \subset X\), so \(\bigcap_{i = 1}^{+\infty}E_i \in \p(X)\),
+    \end{enumerate}
+    In short, \(\Sigma = \p(X)\) is closed under complement, intersection and union, and therefore a \(\sigma\)-algebra.
+    \item \(\mu\) is a measure because \(\mu: \Sigma \to \overline{\R}\) satisfies that:
+    \begin{enumerate}
+        \item \(\mu(\emptyset) = \# \emptyset = 0\),
+        \item for all \(E \in \p(X), \mu(E) = \# E \geq 0\),
+        \item let \(\{E_i\}_{i = 0}^{+\infty}\) be pairwise disjoint,
+        \begin{align*}
+            \mu\left(\bigcup_{i = 1}^{+\infty} E_i\right) &= \# \bigcup_{i = 1}^{+\infty} E_i\\
+            &= \sum_{i = 1}^{+\infty} \# E_i\\
+            &= \sum_{i = 1}^{+\infty} \mu(E_i),
+        \end{align*}
+        the second equal sign being true since all the sets are pairwise disjoint.
+    \end{enumerate}
+\end{enumerate}

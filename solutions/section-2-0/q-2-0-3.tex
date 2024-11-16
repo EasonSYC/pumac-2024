@@ -1,1 +1,10 @@
-Please add the solution to solutions/section-2-0/q-2-0-3.tex.
+\(A \subset B\) means that \(B = A \cup B \setminus A\), and \(B \setminus A = B \cap X \setminus A\).
+
+\(X \setminus A \in \Sigma\) by Axiom 2 for a \(\sigma\)-algebra, so \(B \cap X \setminus A = B \setminus A \in \Sigma\) by Axiom 4.
+
+Clearly, \(A \cap B \setminus A = \emptyset\), so by Axiom 3 for a measure,
+\[
+\mu(B) = \mu(A \cup B\setminus A) = \mu(A) + \mu(B \setminus A).
+\]
+
+By Axiom 2 for a measure, \(\mu(B\setminus A) \geq 0\), which means \(\mu(B) \geq \mu(A)\) as desired.

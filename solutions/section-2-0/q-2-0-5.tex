@@ -1,1 +1,27 @@
-Please add the solution to solutions/section-2-0/q-2-0-5.tex.
+Yes, \((X, \Sigma, \mu)\) is a measure space.
+
+We have verified before that \(\p(X)\) is a \(\sigma\)-algebra over \(X\). Now we verify that \(\mu\) is a measure for such \(\sigma\) algebra.
+\begin{enumerate}
+    \item \(\mu(\emptyset) = 0\) because \(x_0 \notin \emptyset\),
+    \item \(\mu(E) = 0\) or \(1\), so \(\mu(E) \geq 0\) for every \(E \in \Sigma\),
+    \item let \(\{E_i\}_{i = 1}^{+\infty}\) be a collection of pairwise disjoint sets.
+    \begin{itemize}
+        \item \textbf{Case 1.} There exists such \(k \in \N\), \(x_0 \in E_k\). Then by definition \(\mu(E_k) = 1\). Since \(E_i\) are disjoint, for all \(n \neq k, n \in \N\), we must have \(x_0 \notin E_n\), and therefore \(\mu(E_n) = 0\).
+
+        Also, \(x_0 \in E_k \subset \bigcup_{i = 1}^{+\infty} E_i\), so
+        \[
+        \mu\left(\bigcup_{i = 1}^{+\infty} E_i\right) = 1 = \sum_{i = 1}^{+\infty} \mu(E_i),
+        \]
+        and the third axiom for measures holds in this case.
+        
+        \item \textbf{Case 2.} For all \(k \in \N\), \(x_0 \notin E_k\). Then by definition \(\mu(E_k) = 0\) for all \(k\), and the sum \(\sum_{i = 1}^{+\infty} \mu(E_i) = 0\).
+
+        Also,we will have \(x_0 \notin \bigcup_{i = 1}^{+\infty} E_i\), which means
+        \[
+            \mu\left(\bigcup_{i = 1}^{+\infty} E_i\right) = 0 = \sum_{i = 1}^{+\infty} \mu(E_i),
+        \]
+        and the third axiom for measures holds in this case.
+    \end{itemize}
+
+    Therefore all axioms for the measure hold, so \(\mu\) is a measure on \(\Sigma\), and so \((X, \Sigma, \mu)\) is a measure space.
+\end{enumerate}

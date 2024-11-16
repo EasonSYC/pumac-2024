@@ -1,1 +1,24 @@
-Please add the solution to solutions/section-4-0/q-4-0-3.tex.
+We first prove that \(C\) is closed if and only if it contains all points \(x\) such that for all \(r > 0\), \(B_x(r) \cap C \neq \emptyset\).
+
+\begin{itemize}
+    \item \textbf{Only if direction.} We would like to prove that if \(C\) is closed, then for \(x\) s.t. for all \(r > 0\), \(B_x(r) \cap C \neq \emptyset\), we have \(x \in C\).
+
+    Since \(C\) is closed, \(\R^n \setminus C\) is open. B.W.O.C. suppose that \(x \notin C\), so \(x \in \R^n \setminus C\). By the definition of an open set being a union of open balls, \(x\) must be within some open ball (say \(B_p(s)\) which is itself a subset of \(\R^n \setminus C\). It is not difficult to see that \(s > |x - p|\) by definition of an open ball, and from the triangular inequality that \(B_x(s - |x - p|) \subset B_p(s) \subset \R^n \setminus C\): for some point \(y\) s.t. \(|y - x| < s - |x - p|\),
+    \[|y - p| \leq |y - x| + |x - p| < s - |x - p| + |x - p| < s.\]
+
+    Therefore for \(r = s - |x - p|\), \(B_x(r) \subset \R^n \setminus C\), and \(B_x(r) \cap C = \emptyset\), which contradicts with given that \(B_x(r) \cap C \neq \emptyset\).
+
+    \item \textbf{If direction.} We would like to prove that if \(x\) is s.t. for all \(r > 0\), \(B_x(r) \cap C \neq \emptyset\), then \(x \in C\), then \(C\) is closed.
+
+    To show that \(C\) is closed, we show that \(\R^n \setminus C\) is open. From the given condition, we know that for all \(x \in \R^n \setminus C\), there exists some \(r_x > 0\) s.t. \(B_x(r_x) \subset \R^n \setminus C\).
+    
+    (If not, then for all \(r > 0\), \(B_x(r_x) \not\subset \R^n \setminus C\), which implies \(B_x(r_x) \cap C \neq \emptyset\) which implies \(x \in C\) which contradicts with \(x \in \R^n \setminus C\).)
+    
+    Define that
+    \[
+        S = \bigcup_{x \in \R^n \setminus C} B_x (r_x).
+    \]
+    Obviously \(S \subset \R^n \setminus C\) by how we defined \(r_x\). At the same time \(\R^n\setminus C \subset S\) since \(x \in B_x(r_x) \subset S\). Therefore, \(S = \R^n \setminus C\) and we have shown that it is a union of open balls, therefore open, and therefore \(C\) being closed.
+\end{itemize}
+
+Now we show the original statement. Assume \(F_1, F_2\) are both attractors of an IFS \((f_1, \ldots, f_m)\) and \(F_1, F_2\) are non-empty. We would like to show that \(F_1 = F_2\). Define \(f(X) = \bigcup_i f_i(X)\).
