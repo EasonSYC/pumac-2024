@@ -1,1 +1,72 @@
-Please add the solution to solutions/section-2-1/q-2-1-5.tex.
+For \(\delta > 0\) and \(A \subset \R^n\), let
+\[
+M_\delta(A) = \{\{U_i\} : \{U_i\} \text{ is a \(\delta\)-cover of } A\}.
+\]
+
+For \(A \subset \R^n\), \(c \in \R\) and \(c > 0\). Define
+\[
+c A = \{cx : x \in A\}.
+\]
+
+Note that \(E' = cE\).
+
+Note that
+\begin{align*}
+    |cA| &= \sup_{x', y' \in cA} |x' - y'|\\
+    &= \sup_{x, y \in A} |cx - cy|\\
+    &= \sup_{x, y \in A} c|x - y|\\
+    &= c \sup_{x, y \in A} |x - y|\\
+    &= cA.
+\end{align*}
+
+We claim that
+\[\{U_i\} \in M_{\delta}(E) \iff \{c U_i\}\in M_{c\delta}(E').\]
+
+\begin{itemize}
+    \item \textbf{\(\implies\) direction.} Let \(\{U_i\} \in M_\delta(E)\). Therefore \(E \subset \bigcup_i U_i\) and \(|U_i| < \delta\).
+
+    Consider \( \{c U_i\}\). For any \(x' \in E'\), there exists \(x \in E\) such that \(x' = cx\) by definition.
+
+    \begin{align*}
+        E \subset \bigcup_i U_i &\implies \text{There exists } j \in \N \text{ such that } x \in U_j\\
+        &\implies x' = cx \in c U_j\\
+        &\implies x' \in \{c U_i\}.
+    \end{align*}
+
+    Thus \(E' \subset \bigcup_i c U_i\).
+
+    Also, \(|cU_i| = c|U_i| < c\delta\), and therefore \(|c U_i| < c\delta\), and \(E' \subset \bigcup_{i} c U_i\).
+
+    This means \(\{c U_i\}\)  is a \(c\delta\)-cover of \(E'\), and therefore \( \{cU_i\} \in M_{c\delta}(E')\).
+
+    \item \textbf{\(\impliedby\) direction.} By definition, we also have \(E = \frac{1}{c} E'\), where \(\frac{1}{c} \in \R\) and \(\frac{1}{c} > 0\).
+
+    Therefore, by the \(\implies\) direction, we also have
+    \[
+        \{c U_i\}\ \in M_{c\delta} (E') \implies \left\{\frac{1}{c} \cdot c \cdot U_i\right\} \in M_{\frac{1}{c}\cdot c\delta}\left(\frac{1}{c}E'\right) \implies \{U_i\} \in M_\delta (E).
+    \]
+\end{itemize}
+
+Therefore we  have \[\{U_i\} \in M_{\delta}(E) \iff \{c U_i\}\in M_{c\delta}(E')\].
+
+Now, we have
+\begin{align*}
+    \h_{c\delta}^s (E') &= \inf \left\{\sum_{i = 1}^{+\infty} |c  U_i|^s : \{c U_i\} \in M_{c\delta} (E')\right\}\\
+    &= \inf \left\{\sum_{i = 1}^{+\infty} \left(c \cdot |U_i|\right)^s : \{U_i\} \in M_{\delta} (E)\right\}\\
+    &= \inf \left\{c^s \sum_{i = 1}^{+\infty} |U_i|^s : \{ U_i\} \in M_{\delta} (E)\right\}\\
+    &= c^s \cdot \h_{\delta}^s (E).
+\end{align*}
+
+So for any \(\delta > 0\), we will have
+\[
+\h_{c\delta}^s(E') = c^s \h_{\delta}^s(E).
+\]
+
+Therefore,
+\begin{align*}
+    \h^s(E') &= \lim_{c\delta \to 0} \h_{c\delta}^s(E')\\
+    &= \lim_{c\delta \to 0} c^s \h_{\delta}^s(E)\\
+    &= c^s \lim_{\delta \to 0} \h_{delta}^s(E)\\
+    &= c^s \h^s(E),
+\end{align*}
+where \(\lim_{c\delta \to 0}\) is the same as \(\lim_{\delta \to 0}\) since \(c\) is a positive constant.

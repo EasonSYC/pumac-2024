@@ -1,1 +1,47 @@
-Please add the solution to solutions/section-2-1/q-2-1-6.tex.
+For \(\delta > 0\), \(A \subset \R^n\), let
+\[
+M_\delta(A) = \{\{U_i\} : \{U_i\} \text{ is a } \delta\text{-cover of } A\}.
+\]
+
+For any \(A \subset \R^n, x \in \R^n\), we define \(A + x = \{a + x: a \in A\}\).
+
+Note that
+\begin{align*}
+    |A + x| &= \sup_{y', z' \in A + x} |y' - z'|\\
+    &= \sup_{y, z \in A} |(y + x) - (z + x)|\\
+    &= \sup_{y, z \in A} |y - z|\\
+    &= |A|.
+\end{align*}
+
+\textbf{Claim.}
+\[
+\{U_i\} \in M_{\delta}(E) \iff \{U_i + x\} \in M_{\delta}(E').
+\]
+
+\textit{Proof.}
+\begin{itemize}
+    \item \textbf{\(\implies\) direction.} Let \(\{U_i\} \in M_{\delta}(E)\), which implies \(E \subset \bigcup_i U_i\) and \(|U_i| < \delta\).
+
+    Consider \(\{U_i + x\}\). We have \(|U_i + x| = |U_i| < \delta\). Also, let \(y' \in E'\). Then there must exist some \(y \in E\) such that \(y' = y + x\).
+    \begin{align*}
+        y \in E \subset \bigcup_i U_i &\implies y \in U_j \text{ for some } j \in \N\\
+        &\implies y' = y + x \in \left(U_j + x\right)\\
+        &\implies y' \in \{U_j + x\}.
+    \end{align*}
+    So \(E' \subset\cup_i (U_i + x)\), and therefore \(\{U_i + x\}\) is a \(\delta\)-cover of \(E'\), and so \(\{U_i + x\} \in M_{\delta}(E')\).
+    \item \textbf{\(\impliedby\) direction.} Note that \(E = E' + (-x)\) and \((-x) \in \R^n\). So therefore by the forward direction,
+    \[
+        \{U_i + x\} \in M_{\delta}(E') \implies \{U_i + x + (-x)\} \in M_{\delta} (E' + (-x)) \implies \{U_i\} \in M_{\delta}(E).
+    \]
+\end{itemize}
+This finishes our proof of the claim. \qed
+
+Now we have
+\begin{align*}
+    \h_{\delta}^s (E') &= \inf\left\{\sum_{i = 1}^{+\infty} |U_i + x|^s : \{U_i + x\} \in M_{\delta} (E')\right\}\\
+    &= \inf\left\{\sum_{i = 1}^{+\infty} |U_i|^s : \{U_i\} \in M_{\delta} (E)\right\}\\
+    &= \h_{\delta}^s (E).
+\end{align*}
+
+Since \[\h_{\delta}^s (E') = \h_{\delta}^s (E)\] is true for all \(\delta > 0\), we will have
+\[\h^s(E') = \lim_{\delta \to 0} \h_{\delta}^s (E') = \lim_{\delta \to 0} \h_{\delta}^s (E) = \h^s(E).\]

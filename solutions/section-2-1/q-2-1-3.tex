@@ -1,1 +1,21 @@
-Please add the solution to solutions/section-2-1/q-2-1-3.tex.
+Let \[M_\delta(F) = \{\{U_i\}_i : \{U_i\}_i \text{ is a } \delta\text{-cover of } F\}.\]
+
+\textbf{Claim.} \(M_{\delta_1}(F) \subset M_{\delta_2}(F)\) for \(0 < \delta_1 < \delta_2\).
+
+\textit{Proof.} Take \({\{U_i\}_i} \in M_{\delta_1(F)}\). Then \(\{U_i\}_i\) is a \(\delta_2\) cover of \(F\).
+
+Therefore, \(F \subset \bigcup_i U_i\) and \(|U_i| < \delta_1\).
+
+\(\delta_1 < \delta_2\) so \(|U_i| < \delta_1 < \delta_2\).
+
+Thus \(\{U_i\}_i\) is a \(\delta_2\)-cover of \(F\), and thus \(\{U_i\}_i \in M_{\delta_2}(F)\). \qed
+
+Let
+\[R_\delta(F) = \left\{\sum_{i=1}^\infty |U_i|^s: \{U_i\}_i \in M_\delta(F)\right\}.\]
+
+\begin{align*}
+    M_{\delta_1}(F) \subset M_{\delta_2}(F) &\implies R_{\delta_1}(F) \subset R_{\delta_2}(F)\\
+    &\implies \inf(R_{\delta_1}(F)) \geq \inf(R_{\delta_2}(F))\\
+    &\implies \h_{\delta_1}^s(F) \geq \h_{\delta_2}^s(F)
+\end{align*}
+as desired.

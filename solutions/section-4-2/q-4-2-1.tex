@@ -1,1 +1,64 @@
-Please add the solution to solutions/section-4-2/q-4-2-1.tex.
+\begin{itemize}
+    \item \textbf{The Hausdorff dimension of \(\R\) is 1.} The Hausdorff dimension of \([0, 1]\) is \(s = 1\). This can be shown by considering the IFS \((f_1, f_2)\) on \(\R\):
+    \begin{itemize}
+        \item \(f_1(x) = \frac{1}{2}x\),
+        \item \(f_2(x) = \frac{1}{2} x + \frac{1}{2}\).
+    \end{itemize}
+    
+    Both \(f_1\) and \(f_2\) have contraction ratios \(\frac{1}{2}\), and its is easy to see it satisfies the OSC by taking \((0, 1)\) as the open set, and we can see as well that \([0, 1]\) is the attractor. Therefore, the Hausdorff dimension of \([0, 1]\) \(s'\) must satisfy that \(2 \cdot \frac{1}{2}^{s'} = 1\), which gives \(s' = 1\).
+    
+    By problem 2.1.8, we know that \(\R \subset \R^1\) so the Hausdorff dimention of \(\R\) is \(\leq 1\).
+    
+    By theorem 2.1.1, the Hausdorff measure is a measure on \(\R^n\) over the Borel \(\sigma\)-algebra, which contains \([0, 1]\) and \(\R\), and so since \([0, 1] \subset \R\), we know that for all \(s > 0\), we know that
+    \[
+    \h^s([0, 1]) \leq \h^s(\R).
+    \]
+    
+    From problem 2.1.7, we know
+    \[
+    \text{Hausdorff dimension of } E = \inf_{s \geq 0}{\h^s(E) = 0} = \sup_{s \geq 0}{\h^s(E) = +\infty}.
+    \]
+    
+    The Hausdorff dimension of \([0, 1]\) being \(1\) implies that for all \(s < 1\),
+    \[
+    +\infty = \h^s([0, 1]) \leq \h^s(\R),
+    \]
+    and therefore 
+    \[
+    \text{Hausdorff dimension of } \R = \sup_{s \geq 0}{\h^s(\R) = +\infty} \geq 1.
+    \]
+    
+    Since the Hausdorff dimension of \(\R\) is \(\geq 1\) and \(\leq 1\), we conclude that the Hausdorff dimension of \(\R = 1\).
+
+    \item \textbf{The 1-dimensional Hausdorff measure of \(\R\) is \(+\infty\).} We first show that
+    \[\h^1 ([0, 1]) = 1.\]
+    
+    \begin{itemize}
+        \item \textbf{Upper bound: \(\h^1([0, 1]) \leq 1\).} To show this, we just have to show that for every \(\delta\), we have some \(\delta\)-cover \(\{U_i\}\) that satisfies \(\sum_{i}|\{U_i\}|=1\). We just consider the case where \(0 < \delta < 1\). Consider the following construction for \(\{U_i\}\) where \(0 < \epsilon < \delta\):
+        \[
+        \{[0, (\delta - \epsilon)], [(\delta - \epsilon), 2(\delta - \epsilon)], \ldots, [(n-1) (\delta - \epsilon), n(\delta - \epsilon)], [n(\delta - \epsilon), 1]\},
+        \]
+        where \(n = \floor{\frac{1}{\delta - \epsilon}}\). It is not difficult to see for this construction,
+        \begin{align*}
+            &\phantom{=}\sum_{i} |U_i|\\
+            &= [(\delta - \epsilon) - 0] + \ldots + [n(\delta - \epsilon) - (n-1) (\delta - \epsilon)] + [1 - n(\delta - \epsilon)]\\
+            &= 1.
+        \end{align*}
+        which by definition implies that \(\h_\delta^1([0, 1]) \leq 1\) for any \(0 < \delta < 1\), and hence \(\h^1([0, 1]) \leq 1\).
+        \item \textbf{Lower bound: \(\h^1([0, 1]) \geq 1\).} We consider the following definition of a measure (
+    \end{itemize}
+    
+    By problem 2.1.6 on the translation invariance property of the \(s\)-dimensional Hausdorff measure, we know that \(\h^1([n, n + 1]) = 1\) for all \(n \in \Z\).
+    
+    Since
+    \[\R \supset \bigcup_{n = -\infty}^{+\infty} [2n, 2n + 1]\]
+    where the right-hand-side is a disjoint union and since \(s\)-dimensional Hausdorff measure is a measure on the Borel \(\sigma\)-algebra by theorem 2.1.1, it will satisfy Axiom 3 for a measure (for all the sets concerning below, since they are all Borel sets), and hence
+    \begin{align*}
+        \h^1(\R) &\geq \sum_{n = -\infty}^{+\infty} \h^1([2n, 2n + 1])\\
+        &= \sum_{n = -\infty}^{+\infty} 1\\
+        &= +\infty
+    \end{align*}
+    which then implies \(\h^1(\R) = +\infty\)which finishes our proof.
+\end{itemize}
+
+

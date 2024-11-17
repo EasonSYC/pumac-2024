@@ -1,1 +1,27 @@
-Please add the solution to solutions/section-4-2/q-4-2-3.tex.
+First of all, we need to determine the Hausdorff Dimension of the Cantor Dust D. We will do this by finding an IFS where it is the attractor, proving OSC, then using 4.1.2 to determine the Hausdorff Dimension.
+
+An IFS for this set is 
+ \((f_1, f_2, f_3, f_4)\) with
+\begin{align*}
+    f_1((x, y)) &= \left(\frac{1}{3}x, \frac{1}{3}y\right),\\
+    f_2((x, y)) &= \left(\frac{1}{3}x + \frac{2}{3}, \frac{1}{3}y\right),\\
+    f_3((x, y)) &= \left(\frac{1}{3}x, \frac{1}{3}y + \frac{2}{3}\right),\\
+    f_4((x, y)) &= \left(\frac{1}{3}x + \frac{2}{3}, \frac{1}{3}y + \frac{2}{3}\right).\\
+\end{align*}
+These all have contraction ratio $\frac{1}{3}$
+
+This satisfies the OSC: take the open interval $I := (0,1)^2$ as our open set, then 
+\begin{align*}
+    f_1(I) &= (0, \frac{1}{3})^2,\\
+    f_2((x, y)) &= (\frac{2}{3}, 1)\times(0, \frac{1}{3})\\
+    f_3((x, y)) &= (0, \frac{1}{3})\times(\frac{2}{3}, 1)\\
+    f_4((x, y)) &= (\frac{2}{3}, 1)^2.\\
+\end{align*}
+These are all disjoint, so the OSC is satisfied. The Cantor Dust is an attractor of this IFS, and by 4.0.2 it is the attractor. By 4.1.2, if the Hausdorff dimension equals $s$ then $\sum_i c_i^s = 1 \implies \frac{4}{3^s} = 1 \implies s = \frac{\log(4)}{\log(3)}$. 
+
+Now let's determine a mass distribution on D - by theorem 4.2.4 we can pick the natural measure. Since $c_i = \frac{1}{3}$ for all i, $c_i^s = \frac{1}{3^(\frac{\log(4)}{\log(3)})} = \frac{1}{4}$, so $\mu(I_k) = 4^{-k}$ (where $I_k$ is a square constructed in the kth iteration of the Cantor Dust).
+
+Now let $U \subset D, |U| < \sqrt{2}$: there exists some $k$ s.t. $3^{-(k+1)} \leq |U| < 3^{-k}$. Then $U \subset I_k \cap D$ for $I_k$ defined earlier - since by this size restriction it can't be in multiple $I_k$. Hence by problem 2.0.3, 
+$$ \mu(U) \leq \mu(I_k) = 4^{-k} = (3^s)^{-k}$$
+$$ = (3^{-k})^s \leq (3|U|)^s,$$ 
+so by 4.2.2 $\h^s(D) \geq \mu(D)*3^{-s} = \frac{1}{4} > 0$, as required.

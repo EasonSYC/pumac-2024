@@ -1,1 +1,37 @@
-Please add the solution to solutions/section-2-1/q-2-1-4.tex.
+
+\begin{enumerate}
+    \item By definition,
+    \[\h^s_\delta(E) = \inf \left\{\sum_{i=1}^\infty |U_i|^s : \{U_i\}\text{ is a }\delta\text{-cover of }E\right\}.\]
+
+    \(\sum_{i=1}^\infty |U_i|^s \geq 0\) as \(|U_i| \geq 0\), so \(\h^s_\delta(E) \geq 0 \implies \h^s \geq 0\) (as if the limit approaches \(L < 0\), there must be infinitely many terms in the ball with radius \(-L\) around \(L\), but there can't be any as all this terms in this ball are less than 0, while  \(\h_\delta^s(E) \geq 0\) for all \(\delta\)).
+
+\item By definition,
+    \[\h^s_\delta(\emptyset) = \inf \left\{ \sum_{i=1}^\infty |U_i|^s : \{U_i\} \text{ is a }\delta\text{-cover of }\emptyset\right\}.\]
+    
+    But \(\emptyset\) is a \(\delta\)-cover as \(\emptyset \subset \bigcup_{S \in \emptyset} S = \emptyset\), and trivially \(|U_i| < \delta\) for all \(U_i \in \emptyset\) (as there are none).
+
+    \(\sum_i |U_i|^s = 0\) as this is an empty sum, hence by definition of the \(\inf\) operator, \(\h_\delta^s (\emptyset) \leq 0\). By part 1, \(\h^s_\delta(E) \geq 0\) so \(\h_\delta^s (\emptyset) = 0\).
+    
+    Hence \(\h^s (\emptyset) = 0\) as the limit of a sequence which is identically 0 is 0 (for any \(\epsilon\)-ball around \(0\) all the terms are always in this ball).
+
+\item  Consider a countable set of $\{E_j\}_{j = 0}^{+\infty}$;
+
+    \begin{align*}
+    \sum_{j = 1}^{+\infty} \h_d^s(E_j) &= \sum_{j = 1}^{+\infty} \inf \left\{ \sum_{i = 1}^{+\infty} |(U_j)_i|^s : (U_j)_i \text{ is a }\delta\text{-cover of } E_j \right\} \\
+    &\geq \inf \left\{ \sum_{j = 1}^{+\infty} \sum_{i = 1}^{+\infty} |(U_j)_i|^s : (U_j)_i \text{ is a }\delta\text{-cover of } E_j \right\}. 
+    \end{align*}
+    Now, \(\bigcup_{j = 1}^{+\infty} \{(U_j)_i\}_i\) is a \(\delta\)-cover of \(\bigcup_{j = 1}^{+\infty} E_j\) (where \(\{(U_j)_i\}_{i = 1}^{+\infty} \text{ is a }\delta\text{-cover of } E_j\)): each \(\{(U_j)_i\}_i\) has elements with diameter \(< \delta\) so their union does as well, and each point in \(\bigcup_{j = 1}^{+\infty} E_j\) is in one of the \(E_j\)s so is covered in one of the \((U_j)_i\)s (as they are covers of \(E_j\)). 
+    
+    Thus, 
+    \[ \left\{ \sum_{i,j} |(U_j)_i|^s : (U_j)_i \text{ is any }\delta\text{-cover of } E_j \right\} \geq  \sum_{k} |U_k|^s: U_k  \text{ is some }\delta\text{-cover of } \bigcup_j E_j;\]
+    by problem 2.0.3;
+    
+    Hence
+    \begin{align*}
+        \inf \left\{ \sum_{i,j} |(U_j)_i|^s : (U_j)_i \text{ is a }\delta\text{-cover of } E_j \right\} &\geq \inf \left\{\sum_k |U_k|^s: U_k  \text{ is a }\delta\text{-cover of } \bigcup_j E_j\right\}\\
+        &= \h_d^s\left(\bigcup_j E_j\right).
+    \end{align*}
+    
+    Thus we have \(\sum_j \h_d^s(E_j) \geq  \h_d^s(\bigcup_j E_j)\) for all \(\delta > 0\), so it also holds in the limit as \(\delta \to 0\).
+
+\end{enumerate}

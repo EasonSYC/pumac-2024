@@ -1,1 +1,11 @@
-Please add the solution to solutions/section-4-1/q-4-1-3.tex.
+B.W.O.C. assume the Cantor Set \(C\) was countable. By definition of a countable set, we could list the points as \(\{a_i\}_{i=1}^{+\infty}\). Recall that for \(s,\delta > 0\), 
+
+\[\h_\delta^s (C) = \inf \left\{\sum_i |U_i|^s : \{U_i\}_i \text{ is a } \delta\text{-cover of } C \right\}.\]
+
+Consider the cover \(\{A_i\}_i(\epsilon)\) for \(\epsilon > 0\), where \(A_i\) is the open interval of size \(\frac{\epsilon}{2^i}\) centered at \(a_i\), i.e., \(A_i = B_{a_i} \left(\frac{\epsilon}{2^i}\right)\). Since each point has an open interval covering it, this is clearly a cover of \(a_i\); and we can make the first set have diameter \(|A_1| < \delta\) by taking \(\epsilon\) to be arbitrarily small, so the it satisfies the condition, and since the set sizes monotonically decrease the rest of them also satisfy the condition. Thus the cover is a \(\delta\)-cover, and therefore
+\begin{align*} 
+ \h_\delta^s (C) &\leq \sum_{i=0}^\infty \left(\frac{\epsilon}{2^n}\right)^s \\
+ &= \epsilon^s \sum_{i=0}^{\infty} (2^{-s})^n \\
+ &= \frac{\epsilon^s}{1-2^{-s}}.
+\end{align*}
+Since \(s > 0\), this converges, and taking \(\epsilon\) arbitrarily small we can make this arbitrarily close to 0. This is true for each \(\delta\), so \(\h^s(C) \leq 0\). By 2.1.4.1, \(\h^s(C) \geq 0\), so \(\h^s = 0\). Hence the Hausdorff dimension of \(C\) is \(\leq s\) for all \(s > 0\). But taking \(s \ll \frac{\log(2)}{\log(3)}\), we know that the Hausdorff dimension of \(C\) \( \ll \frac{\log(2)}{\log(3)}\). However by Theorem 4.1.2 \(\frac{\log(2)}{\log(3)}\) was the unique Hausdorff dimension so this leads to a contradiction, and \(C\) cannot be countable.

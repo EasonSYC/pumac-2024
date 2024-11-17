@@ -1,1 +1,55 @@
-Please add the solution to solutions/section-2-1/q-2-1-7.tex.
+\begin{enumerate}
+    \item Let \(0 < \delta < 1\), and let \(\{U_i\}\) be a \(\delta\)-cover of \(E\).
+    \begin{align*}
+        &\phantom{\implies} 0 \leq |U_i| < \delta < 1, r < s\\
+        &\implies |U_i|^s \leq |U_i|^r\\
+        &\implies \sum_{i = 1}^{+\infty} |U_i|^s \leq \sum_{i = 1}^{+\infty} |U_i|^r.
+    \end{align*}
+
+    By definition,
+    \begin{align*}
+        &\phantom{\implies} \h_\delta^s(E) = \inf \left\{\sum_{i = 1}^{+\infty} |U_i|^s : \{U_i\} \text{ is a } \delta\text{-cover of } E\right\}\\
+        &\implies \h_{\delta}^s(E) \leq \sum_{i = 1}^{+\infty} |U_i|^s \leq \sum_{i = 1}^{+\infty} |U_i|^r\text{ where } \{U_i\} \text{ is a } \delta\text{-cover of } E, \\
+        &\implies \h_\delta^s(E) \leq \inf\left\{\sum_{i = 1}^{+\infty} |U_i|^r : \{U_i\} \text{ is a } \delta\text{-cover of } E\right\} = \h_\delta^r(E)
+    \end{align*}
+
+    \item
+    \begin{align*}
+        |U_i| \geq 0, s > 0 &\implies \sum_{i = 1}^{+\infty} |U_i|^s \geq 0\\
+        &\implies 0 \leq \\
+        &\implies 0 \leq \h_{\delta}^s(E) =  \inf \left\{\sum_{i = 1}^{+\infty} |U_i|^s : \{U_i\} \text{ is a } \delta\text{-cover of } E\right\}.
+    \end{align*}
+
+    So \(\h_{\delta}^s (E) \geq 0 \implies \delta > 0\).
+
+    We will show that \(\h_{\delta}^s(E)\) gets arbitrarily close to \(0\) as \(\delta \to 0\), which then implies \(\h^s(E) = 0\).
+
+    Let \(b = s - r > 0\) since \(r < s\). Let \(0 < \delta < 1\). Let \(\{U_i\}\) be a \(\delta\)-coverage of \(F\), and therefore \(|U_i| < \delta < 1\).
+
+    \begin{align*}
+        &\phantom{\implies} |U_i|^s = |U_i|^r \cdot |U_i|^b\\
+        &\implies |U_i|^s \leq |U_i|^r \delta^b\\
+        &\implies \sum_{i = 1}^{+\infty} |U_i|^s \leq \sum_{i = 1}^{+\infty} |U_i|^r \delta^b = \delta^b \sum_{i = 1}^{+\infty} |U_i|^r.
+    \end{align*}
+
+    \begin{align*}
+        &\phantom{\implies} \h_\delta^r(E) = \inf \left\{\sum_{i = 1}^{+\infty} |U_i|^r : \{U_i\} \text{ is a } \delta \text{-cover of } E\right\}\\
+        &\implies \text{For all }\epsilon > 0, \text{ there exists a }\delta\text{-cover }\{U_i\} \text{ such that } \h_{\delta}^r(E) + \epsilon > \sum_{i = 1}^{+\infty} |U_i|^r\\
+        &\implies \delta^b (\h_\delta^r(E) + \epsilon) > \delta^b \sum_{i = 1}^{+\infty} |U_i|^r \geq \sum_{i = 1}^{+\infty} |U_i|^s,
+    \end{align*}
+    and thus \(\h_\delta^s(E) = \inf \left\{\sum_{i = 1}^{+\infty} |U_i|^s : \{U_i\} \text{ is a } \delta \text{-cover of } E\right\} < \delta^b (\h_\delta^r(E) + \epsilon)\).
+
+    Setting \(\epsilon = 1\), we get \(\h_\delta^s(E) < \delta^b (\h_\delta^r(E) + 1)\).
+
+    From problem 2.1.3, we know that \(\h_\delta^r(E)\) weakly increases as \(\delta\) decreases towards 0, and therefore
+    \[
+    \h^r(E) = \lim_{\delta \to 0} \h_\delta^s(E) \geq \h_\delta^s(E),
+    \]
+    so for any \(\delta > 0\), we have \(\h_\delta^s(E) < \delta^b (\h^r(E) + 1)\).
+
+    By our assumption, \(\h^r(E) + 1\) is fixed and \(< \infty\), so as \(\delta \to 0\), \(\delta^b(\h^r(E) + 1)\) gets arbitrarily close to 0. Therefore,
+    \[
+    \h^s(E) = \lim_{\delta \to 0} \h_{\delta}^s (E) \leq 0,
+    \]
+    but by part one of problem 2.1.4, \(\h^s(E) \geq 0\), so \(\h^s(E) = 0\) as desired.
+\end{enumerate}

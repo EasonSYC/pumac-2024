@@ -1,1 +1,32 @@
-Please add the solution to solutions/section-2-1/q-2-1-9.tex.
+Let \(E \in \R^n\), we consider two cases on \(E\).
+\begin{itemize}
+    \item \textbf{\(E\) is finite}. Let \(x_1, \ldots, x_m\) be the elements of \(E\), where \(x_i \neq x_j\) for \(i \neq j\), i.e.,
+    \[
+    E = \{x_1, x_2, \ldots, x_m\},
+    \]
+    where \[\# E = m.\]
+
+    Let \(1 \leq k \leq m, k \in \N\), let \(\delta > 0\). \(\{\{x_k\}\}\) is a \(\delta\)-cover for \(\{x_k\}\) since \(x_k \in \{x_k\}\) and \(|\{x_k\}| = |x_k - x_k| = 0 < \delta\). Therefore,
+    \begin{align*}
+        \h_\delta^0(\{x_k\}) &= \inf \left\{\sum_{i = 1}^{+\infty} |U_i|^0 : \{U_i\} \text{ is a } \delta\text{-cover of }\{x_k\}\right\}\\
+        &\leq \sum_{i = 1}^{1} 0^0\\
+        &= 1.
+    \end{align*}
+
+    Notice that any cover of \(x_k\) must contain a set, since \(x_k \notin \emptyset\). This means \(\sum_{i = 1}^{+\infty} |U_i|^0 \geq 1\). So \(\h_\delta^0(\{x_k\}) = 1\) for all \(\delta > 0\), which then implies \(\h^0(\{x_k\}) = \lim_{\delta \to 0} \h_\delta^0(\{x_k\}) = 1\).
+
+    By theorem 2.1.1, we must have
+    \begin{align*}
+        \h^0(E) &= \h^0(\{x_1\}) + \h^0(\{x_2\}) + \ldots + \h^0(\{x_m\})\\
+        &= 1 + 1 + \ldots + 1\\
+        &= m\\
+        &= \# E,
+    \end{align*}
+    so if \(E\) is finite, \(\h^0(E)\) is simply the counting measure.
+
+    \item \textbf{\(E\) is infinite.} As shown in the first case, for any point \(x \in \R^n\), we have \(\h^0(\{x\}) = 1\). B.W.O.C. suppose that \(\h^0(E)\) is finite, and say it is equal to some \(a \in \R\).
+
+    We choose \(x_1, x_2, \ldots, x_{\floor{a} + 1} \in E\) which are pairwise distinct. This is always possible since \(E\) is infinite. Let \(A = \{x_1, x_2, \ldots, x_{\floor{a}+1}\} \subset E\). By the first case, \(\h^0(E) = \# A = \floor{a} + 1 > a = \h^0(E)\). But by theorem 2.1.1 and problem 2.0.3, \(A \subset E \implies \h^0(A) \leq \h^0(E)\) which gives a contradiction. So \(\h^0(E)\) cannot be finite and must be infinity. And also \(\# E = \infty\) by the definition of the counting measure.
+\end{itemize}
+
+Therefore, \(\h^0\) is simply the counting measure.

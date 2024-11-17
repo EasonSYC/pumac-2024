@@ -1,46 +1,50 @@
-Let $E_0$ be the base set E, and let 
-$$E_{i+1} = E_i \cup \bigcup_{a, b \in E_i} \overline{ab}, E_\infty = \bigcup_{i=0}^{+\infty} E_i.$$
+Let \(E_0\) be the base set \(E\), and let 
+\[E_{i+1} = E_i \cup \bigcup_{a, b \in E_i} \overline{ab}, E_\infty = \bigcup_{i=0}^{+\infty} E_i.\]
 
-$E_\infty$ convex: if $a, b \in E_\infty$, they must be in $E_i$ for some i, then $\overline{ab} \in E_{i+1}$. \\
-$E_{i+1} \leq E_i$: 
+\(E_\infty\) convex: if \(a, b \in E_\infty\), then \(a \in E_i, b \in E_j\) for some \(i, j \in \N\), and therefore \(a, b \in E_{\max\{i, j\}}\) and so W.L.O.G. we simply denote this \(a, b \in E_i\) for some \(i \in \N\), then we will have \(\overline{ab} \in E_{i+1}\).
+
+We first show that \(|E_{i+1}| \leq |E_i|\).
 \begin{align*}
-|E_{i+1}| 
-&= \sup_{p_1, p_2 \in E_{i+1}} |p_1-p_2| \\
-&\leq \sup_{a_1, a_2, b_1, b_2 \in E_i, p_1 \in \overline{a_1b_1}, p_2 \in \overline{a_2b_2}} |p_1-p_2| \\
-&\leq \sup_{a_1, a_2, b_1, b_2 \in E_i, p_1 \in \overline{a_1b_1} } \max(|p_1-a_2|, |p_1-b_2|) \\
-&\leq \sup_{a_1, a_2, b_1, b_2 \in E_i} \max(|a_1-a_2|, |b_1-a_2|, |a_1-b_2|, |b_1-b_2|) \\
-&\leq \sup_{x, y \in E_i} |x-y| \\
-&= E_i,
+    |E_{i+1}| &= \sup_{p_1, p_2 \in E_{i+1}} |p_1-p_2| \\
+    &\leq \sup_{\substack{a_1, a_2, b_1, b_2 \in E_i,\\p_1 \in \overline{a_1b_1},\\p_2 \in \overline{a_2b_2}}} |p_1-p_2| \\
+    &\leq \sup_{\substack{a_1, a_2, b_1, b_2 \in E_i, \\ p_1 \in \overline{a_1b_1}}} \max(|p_1-a_2|, |p_1-b_2|) \\
+    &\leq \sup_{a_1, a_2, b_1, b_2 \in E_i} \max(|a_1-a_2|, |b_1-a_2|, |a_1-b_2|, |b_1-b_2|) \\
+    &\leq \sup_{x, y \in E_i} |x-y| \\
+    &= |E_i|,
 \end{align*}
-where the first and second inequalities are due to the fact that in a triangle ABC, $\sup_{P \in \overline{BC}} |A-P| \leq \max(|A-B|, |A-C|)$.
+where the first and second inequalities are due to the fact that for a triangle \(ABC\),
+\[\sup_{P \in \overline{BC}} |A-P| \leq \max(|A-B|, |A-C|).\]
 
-Hence $|E_0| \leq |E_1| \leq \ldots \leq E_\infty$.
+Hence \(|E_0| \leq |E_1| \leq \ldots \leq |E_\infty|\).
 
-Now let $D = \bigcup_{p \in E_{\infty}} B_p(\frac{\epsilon}{2})$.\\
-D is open as it's a union of open balls. \\
-By construction of D, let $a \in D$ be in $B_{p_a}\frac{\epsilon}{2}$ for $p_a \in E_\infty$. \\
-$|D| \leq \epsilon + |E|$:
+Now let
+\[D = \bigcup_{p \in E_{\infty}} B_p\left(\frac{\epsilon}{2}\right).\]
+
+\(D\) is open as it's a union of open balls.
+
+By construction of \(D\), let \(a \in D\) be in \(B_{p_a}\left(\frac{\epsilon}{2}\right)\) for \(p_a \in E_\infty\).
+
+We show that \(|D| \leq \epsilon + |E|\).
 \begin{align*}
-|D|
-&= \sup_{a,b \in D} |a-b|\\
-&= \sup_{a,b \in D} |(a-p_a) + (p_a-p_b) + (p_b-b)|\\
-&\leq \sup_{a,b \in D} |(a-p_a)| + |(p_a-p_b)| + |(p_b-b)|\\
-&\leq \sup_{a,b \in D} \frac{\epsilon}{2} + |(p_a-p_b)| + \frac{\epsilon}{2}\\
-&\leq \epsilon + \sup_{a,b \in D} |(p_a-p_b)| \\
-&\leq \epsilon + \sup_{a,b \in E_\infty} |a-b| \\
-&\leq  \epsilon + |E_\infty| \\
-&\leq  \epsilon + |E_0| \\
-&=  \epsilon + |E| \\
-\end{align*}, as required. (where the fourth inequality is from the fact that $p_i \in E_{\infty}$.)
+    |D| &= \sup_{a,b \in D} |a-b|\\
+    &= \sup_{a,b \in D} |(a-p_a) + (p_a-p_b) + (p_b-b)|\\
+    &\leq \sup_{a,b \in D} \left(|a-p_a| + |p_a-p_b| + |p_b-b|\right)\\
+    &\leq \sup_{a,b \in D} \left(\frac{\epsilon}{2} + |p_a-p_b| + \frac{\epsilon}{2}\right)\\
+    &\leq \epsilon + \sup_{a,b \in D} |p_a-p_b| \\
+    &\leq \epsilon + \sup_{a,b \in E_\infty} |a-b| \\
+    &\leq  \epsilon + |E_\infty| \\
+    &\leq  \epsilon + |E_0| \\
+    &=  \epsilon + |E|,
+\end{align*}
+as required. (The fourth inequality is from the fact that $p_i \in E_{\infty}$.)
 
-D is convex: Let $a, b \in D, p \in \overline{ab}$, let q be the closest point on $\overline{p_ap_b}$ to p. We have $|p-q| \leq \max(|p_a - a|, |p_b - b|)$ by geometry, and $q \in \overline{p_ap_b}$ by convexity of $E_\infty$, so
+Now we show \(D\) is convex. Let \(a, b \in D, p \in \overline{ab}\), let \(q\) be the closest point on \(\overline{p_ap_b}\) to \(p\). We have \(|p-q| \leq \max(|p_a - a|, |p_b - b|)\) by geometry, and \(q \in \overline{p_ap_b}\) by convexity of \(E_\infty\), so
 \begin{align*}
-|p-q| 
-&\leq \max(|p_a - a|, |p_b - b|) \\
-&\leq \frac{\epsilon}{2} \\
-&\implies p \in B_q(\frac{\epsilon}{2}) \subseteq D
-\end{align*} by construction of D. 
-Thus all the properties of $U = D$ are satisfied. \qed
+    |p-q| &\leq \max(|p_a - a|, |p_b - b|) \\
+    &\leq \frac{\epsilon}{2},
+\end{align*}
+and therefore \(p \in B_q\left(\frac{\epsilon}{2}\right) \subseteq D\) by construction of D. 
+Thus all the properties of \(U = D\) are satisfied.
 
 
 
