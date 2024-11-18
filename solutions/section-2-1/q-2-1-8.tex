@@ -3,6 +3,66 @@ Let \(E \subset \R^n, n \in \N\). Let \(A\) be the \(n\)-dimensional unit open h
 Let \(s > n\). We prove the following claim:
 
 \textbf{Claim.} \(\h^s(A) = 0\).
-\textit{Proof.} Let \(\delta > 0.\)
 
-Now consider \(cA = \{cx : x \in A\}\) for \(c > 0\). By problem 2.1.5, \(\h^s\)
+\textit{Proof.} Let \(\delta > 0.\) We can partition \(A\) into closed \(n\)-dimensional hypercubes of side length \(\frac{\delta}{2\sqrt{n}}\).
+
+It is clear that these cubes have diameter equal to the length of the diagonal that goes from \((0, 0, \ldots, 0)\) to \((1, 1, \ldots, 1)\). And therefore, by Pythagoras theorem, the diameter is \(\sqrt{\left(\frac{\delta}{2\sqrt{n}}\right)^2 \cdot n} = \frac{\delta}{2} < \delta\).
+
+To cover one edge of \(A\), we need \(\frac{1}{\left(\frac{\delta}{2\sqrt{n}}\right)} = \frac{2\sqrt{n}}{\delta}\) cubes, so to cover all of \(A\), we will need \(\left(\frac{2\sqrt{n}}{\delta}\right)^n = \frac{\left(2\sqrt{n}\right)^n}{\delta^n}\) cubes.
+
+Therefore,
+\begin{align*}
+    &\phantom{=} \sum_{i = 1}^{\frac{\left(2\sqrt{n}\right)^n}{\delta^n}} | \text{small cube}|^s\\
+    &= \frac{\left(2\sqrt{n}\right)^n}{\delta^n} \cdot \left(\frac{\delta}{2}\right)^s\\
+    &= \delta^{s - n} \cdot \left(\frac{\left(2\sqrt{n}\right)^n}{2^s}\right).
+\end{align*}
+
+Since these cubes cover \(A\), and each have diameter \(< \delta\), they are a \(\delta\)-cover of \(A\), and therefore, by definition,
+\[
+H_\delta^s(A) \leq \delta^{s - n}\left(\frac{\left(2\sqrt{n}\right)^n}{2^s}\right).
+\]
+
+\(s - n > 0\) since \(s > n\), and therefore, 
+\[
+\lim_{\delta \to 0} \delta^{s - n} \left(\frac{\left(2\sqrt{n}\right)^n}{2^s}\right) = 0 \implies \h^s(A) = \lim_{delta \to 0} \h_{\delta}^s(A) \leq 0.
+\]
+
+By part 1 of problem 2.1.4, we know \(\h^s(A) \geq 0\), and therefore \(\h^s(A) = 0\). \qed
+
+Now consider \(cA = \{cx : x \in A\}\) for \(c > 0\). By problem 2.1.5, \(\h^s(cA) = c^s \h^s(A) = 0\). \(cA = \left(-\frac{c}{2}, \frac{c}{2}\right)^n\). Let
+\[
+B = \bigcup_{i \in \N} iA.
+\]
+
+\textbf{Claim.} \(B = \R^n\).
+
+\textit{Proof.} \(A \subset \R^n \implies iA \subset \R^n \implies B \subset \R^n\).
+
+Take some \(x \in \R^n\) and let \(x = (x_1, x_2, \ldots, x_n)\). Let
+\[
+m = \floor{\max |x_i|} + 1 \implies |x_i| < m \text{ for all } 1 \leq i \leq n.
+\]
+
+Consider \(2mA = (-m, m)^n\). Clearly \(x = \left(x_1, \ldots, x_n\right) \in 2mA\) which in turn implies that \(x \in B = \bigcup_{i \in \N} iA\), and therefore \(\R^n \subset B\).
+
+Therefore \(B = \R^n\). \qed
+
+By part 3 of problem 2.1.4, we must have
+\[
+\h^s (\R^n) \leq \sum_{i = 1}^{+\infty} \h^s(iA) = 0,
+\]
+but by part 1 of problem 2.1.4, \(\h^s (\R^n) \geq 0\). This means that \(\h^s(\R^n) = 0\).
+
+By problem 2.0.3 and theorem 2.1.1, for \(E \subset \R^n\), we must have
+\[
+\h^s(E) \leq \h^s (\R_n) = 0,
+\]
+but also by part 1 of 2.1.4, we have \(\h^s(E) \geq 0 \implies \h^s(E) = 0\).
+
+Therefore, for all \(s > n\), we have \(\h^s(E) = 0\).
+
+B.W.O.C. assume that the Hausdorff dimension of \(E = d > n\). Therefore, for all \(r < d\), we havve \(\h^r(E) = +\infty\) by definition 2.1.2 and part 1 of problem 2.1.7.
+
+Since \(d > n\), we may choose \(n < s < d\). \(s > n \implies \h^s(E) = 0\), but \(s < d \implies \h^s(E) = +\infty\), which is a contradiction.
+
+Therefore, the Hausdorff dimension of \(E \leq n\), which finishes our proof of the question.

@@ -16,11 +16,10 @@
     \item
     \begin{align*}
         |U_i| \geq 0, s > 0 &\implies \sum_{i = 1}^{+\infty} |U_i|^s \geq 0\\
-        &\implies 0 \leq \\
         &\implies 0 \leq \h_{\delta}^s(E) =  \inf \left\{\sum_{i = 1}^{+\infty} |U_i|^s : \{U_i\} \text{ is a } \delta\text{-cover of } E\right\}.
     \end{align*}
 
-    So \(\h_{\delta}^s (E) \geq 0 \implies \delta > 0\).
+    So \(\h_{\delta}^s (E) \geq 0 \) for all \( \delta > 0\).
 
     We will show that \(\h_{\delta}^s(E)\) gets arbitrarily close to \(0\) as \(\delta \to 0\), which then implies \(\h^s(E) = 0\).
 
@@ -43,13 +42,13 @@
 
     From problem 2.1.3, we know that \(\h_\delta^r(E)\) weakly increases as \(\delta\) decreases towards 0, and therefore
     \[
-    \h^r(E) = \lim_{\delta \to 0} \h_\delta^s(E) \geq \h_\delta^s(E),
+    \h^r(E) = \lim_{\delta \to 0} \h_\delta^r(E) \geq \h_\delta^r(E),
     \]
     so for any \(\delta > 0\), we have \(\h_\delta^s(E) < \delta^b (\h^r(E) + 1)\).
 
-    By our assumption, \(\h^r(E) + 1\) is fixed and \(< \infty\), so as \(\delta \to 0\), \(\delta^b(\h^r(E) + 1)\) gets arbitrarily close to 0. Therefore,
+    By our assumption, \(\h^r(E) + 1\) is fixed and \(< \infty\), so as \(\delta \to 0\), \(\delta^b(\h^r(E) + 1)\) gets arbitrarily close to 0. It is decreasing as  \(\delta \to 0\), therefore the limit is defined as  \(\inf( \lim_{\delta \to 0} \delta^b(\h^r(E) + 1))\), which is 0. Therefore,
     \[
-    \h^s(E) = \lim_{\delta \to 0} \h_{\delta}^s (E) \leq 0,
+    \h^s(E) = \lim_{\delta \to 0} \h_{\delta}^s (E) = 0,
     \]
-    but by part one of problem 2.1.4, \(\h^s(E) \geq 0\), so \(\h^s(E) = 0\) as desired.
+   so \(\h^s(E) = 0\) as desired.
 \end{enumerate}

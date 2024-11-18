@@ -45,8 +45,40 @@
             &= 1.
         \end{align*}
         which by definition implies that \(\h_\delta^1([0, 1]) \leq 1\) for any \(0 < \delta < 1\), and hence \(\h^1([0, 1]) \leq 1\).
-        \item \textbf{Lower bound: \(\h^1([0, 1]) \geq 1\).} We consider the following definition of a measure (
+        \item \textbf{Lower bound: \(\h^1([0, 1]) \geq 1\).} We consider the following definition of a measure \(\mu\) on the Borel \(\sigma\)-algebra restricted to \([0, 1]\) which is a compact set:
+        \begin{itemize}
+            \item For Borel Sets \(E \in [0, 1]\) which take the form of the interval
+            \[
+            E  = \left[\frac{k - 1}{2^n}, \frac{k}{2^n}\right]
+            \]
+            for some \(n, k \in N\), \(1 \leq k \leq 2^n\), simply define
+            \[
+            \mu(E_{n, k}) = \frac{1}{2^n}.
+            \]
+
+            The countable additivity is very easy to verify, following from directly the construction.
+
+            \item For the other Borel Sets \(E \subset [0, 1]\), if we define
+            \[
+            S_n = \left\{\left[\frac{k - 1}{2^n}, \frac{k}{2^n}\right] : k \in \N, 1 \leq k \leq 2^n, \left[\frac{k - 1}{2^n}, \frac{k}{2^n}\right] \subset E\right\},
+            \]
+            and define
+            \[
+            \mu(E) = \lim_{n \to \infty} \frac{\# S_n}{2^n}.
+            \]
+        \end{itemize}
+
+        This is indeed a mass distribution since \(\mu([0, 1]) = 1\) is finite. Now we can check that this satisfies the hypothesis of the mass distribution principle, since \(U \subset [\inf U, \sup U]\) and \(|U| = \sup U - \inf U\), and
+        \[\mu (U) \leq \mu ([\inf U, \sup U]) = \sup U - \inf U,\]
+        so it simply satisfies the hypothesis of mass distribution principle for \(c = 1\).
+
+        From theorem 4.2.2 the mass distribution principle, we can see that
+        \[
+        \h^1([0, 1]) \geq \frac{\mu([0, 1])}{1} = 1.
+        \]
     \end{itemize}
+
+    Therefore \(\h^1([0, 1]) = 1\).
     
     By problem 2.1.6 on the translation invariance property of the \(s\)-dimensional Hausdorff measure, we know that \(\h^1([n, n + 1]) = 1\) for all \(n \in \Z\).
     
@@ -58,7 +90,7 @@
         &= \sum_{n = -\infty}^{+\infty} 1\\
         &= +\infty
     \end{align*}
-    which then implies \(\h^1(\R) = +\infty\)which finishes our proof.
+    which then implies \(\h^1(\R) = +\infty\) which finishes our proof.
 \end{itemize}
 
 

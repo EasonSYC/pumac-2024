@@ -22,3 +22,54 @@ We first prove that \(C\) is closed if and only if it contains all points \(x\) 
 \end{itemize}
 
 Now we show the original statement. Assume \(F_1, F_2\) are both attractors of an IFS \((f_1, \ldots, f_m)\) and \(F_1, F_2\) are non-empty and compact. We would like to show that \(F_1 = F_2\). Define \(f(X) = \bigcup_i f_i(X)\), we have \(f(F_1) = F_1, f(F_2) = F_2\).
+
+Let \(\mathcal{C}\) be the set of all non-empty compact subsets of \(\R^n\). We consider defining a metric \(d\) on \(\mathcal{C}\) for \(A, B \in \mathcal{C} \subset \R^n\) by follows.
+
+We first define the distance of a point \(x \in X\) to the set \(Y\) as
+\[
+d(x, Y) = \inf_{y \in Y} |x - y|,
+\]
+which is the 'shortest distance from \(x\) to any point \(y \in Y\)'. Now, the distance between two sets (to let it satisfy properties of metrics), could then be defined as follows:
+\[
+d(A, B) = \max\left\{\sup_{a \in A} d(a, B), \sup_{b \in B} d(b, A) \right\},
+\]
+as 'the furthest the shortest distance can be'.
+
+It is a metric since for \(A, B, C \in \mathcal{C}\):
+\begin{itemize}
+    \item \(d(A, B) \geq 0\) is true since \(|x - y| \geq 0\).
+    
+    If \(d(A, B) = 0\), then it must be true that \(\sup_{a \in A} d(a, B) = \sup_{b \in B} d(b, A) = 0\), which means \(\inf_{b \in B} |a - b| = 0\) for all \(a \in A\) and \(\inf_{a \in A} |a - b| = 0\) for all \(b \in B\).
+
+    This means that for all \(a \in A\), for any \(\epsilon > 0\), there exists a \(b \in B\) such that \(a \in B_b(\epsilon)\). So \(b\) satisfies that for all \(\epsilon > 0\), \(B_b(\epsilon) \cap A \supset \{a\}\) and therefore \(B_b(\epsilon) \cap A \neq \emptyset\). But since \(A\) is compact, it is closed, and therefore, it contains all points \(x\) such that for \(r > 0, B_x(r) \cap C \neq \emptyset\), and therefore \(b \in A\) for all \(b \in B\), therefore \(B \subset A\). A symmetrical argument can be made to show \(A \subset B\) and therefore \(A = B\).
+    
+    \item \(d(A, B) = d(B, A)\) is true by symmetry of the definition;
+    \item \(d(A, B) + d(B, C) \geq d(A, C)\) inherits from the fact that \(|a - b|\) is a metric. Specifically, \(d(a, C) \leq |a - c| \leq |a - b| + |b - c|\) by definition and by triangular inequality for any \(a \in A, b \in B, c \in C\). Taking \(\inf_{c \in C}\) will therefore then give us \(d(a, C) \leq |a - b| + d(B, C)\), for which if we take \(\inf_{b \in B}\) will therefore be \(d(a, C) \leq d(a, B) + d(B, C)\), but since \(d(a, B) \leq d(A, B)\) we must have \(d(a, C) \leq d(A, B) + d(B, C)\), and therefore \(\sup_{a \in A} d(a, C) \leq d(A, B) + d(B, C)\). A similar argument can be shown on \(\sup_{c \in C} d(A, c) \leq d(A, B) + d(B, C)\), and therefore
+    \[d(A, C) = \max\left\{\sup_{a \in A} d(a, C), \sup_{c \in C} d(b, A) \right\}  \leq d(A, B) + d(B, C)\]
+    as required.
+\end{itemize}
+
+Now, we show that \(f\) has only one stationary point on \(\mathcal{C}\). By definition, for any \(A, B \in \mathcal{C}\), we must have
+\[
+d(f(A), f(B)) = d\left(\bigcup_{i = 1}^{m} f_i(A), \bigcup_{i = 1}^{m} f_i(B)\right),
+\]
+
+Let
+\[M = \max_{1 \leq i \leq m} d(f_i(A), f_i(B)),\]
+we must have
+\[\sup_{a \in f_i(A)} d(a, f_i(B)) \leq M\]
+for all \(1 \leq i \leq M\) by definition, and therefore that
+\[\sup_{a \in \bigcup_{i = 1}^{m} f_i(A)} d\left(a, \bigcup_{i = 1}^{m} f_i(B)\right) \leq M,\]
+and similarly
+\[\sup_{a \in \bigcup_{i = 1}^{m} f_i(B)} d\left(a, \bigcup_{i = 1}^{m} f_i(A)\right) \leq M.\]
+
+This then shows that
+\[
+d(f(A), f(B)) \leq M = \max_{1 \leq i \leq m} d(f_i(A), f_i(B)) \leq \left(\max_{1 \leq i \leq m} c_i\right)d(A, B).
+\]
+
+Therefore, if \(F_1, F_2 \in \mathcal{C}\) are bot attractors for the IFS \(\left(f_1, f_2, \ldots, f_m\right)\), i.e., \(f(F_1) = F_1, f(F_2) = F_2\), we must have
+\[
+d(f(F_1), f(F_2)) \leq d(F_1, F_2) \leq \left(\max_{1 \leq i \leq m} c_i\right) d(F_1, F_2)
+\]
+since we must have \(0 < \max_{1 \leq i \leq m} c_i < 1\), this implies that we must have \(d(F_1, F_2) = 0\), and therefore, \(F_1 = F_2\), which shows the non-empty compact attractor is unique, as desired.
