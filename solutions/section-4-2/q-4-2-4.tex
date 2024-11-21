@@ -1,1 +1,55 @@
-Please add the solution to solutions/section-4-2/q-4-2-4.tex.
+Consider the set \(V = \left(-\frac{1}{4}, \frac{5}{4}\right) = \left(-\frac{3}{12}, \frac{15}{12}\right)\). For the IFS \((f_1, f_2)\) for the Cantor set \(C\), we have
+\begin{align*}
+    f_1(x) &= \frac{x}{3},\\
+    f_2(x) &= \frac{x}{3} + \frac{2}{3}.
+\end{align*}
+
+Therefore, we have
+\begin{align*}
+    f_1(V) &= \left(-\frac{1}{12}, \frac{5}{12}\right),\\
+    f_2(V) &= \left(\frac{9}{12}, \frac{13}{12}\right).
+\end{align*}
+
+Apparently \(f_1(V) \subset V, f_2(V) \subset V, f_1(V) \cap f_2(V) = \emptyset\). \(V \supset [0, 1] \supset C\) so not only does \(V\) satisfy the strong open set condition that \(C \cap V = C \neq \emptyset\), \(V\) also satisfies that \(V \supset C\) that it contains \(C\) completely.
+
+For the Sierpinski Carpet, it is possible for \(V = (0, 1)^2\) to satisfy the SOSC. Recall that the IFS for the Sierpinski Carpet satisfies that
+
+\begin{align*}
+    g_1((x, y)) &= \left(\frac{x}{3}, \frac{y}{3}\right),\\
+    g_2((x, y)) &= \left(\frac{x}{3}, \frac{y}{3} + \frac{1}{3}\right),\\
+    g_3((x, y)) &= \left(\frac{x}{3}, \frac{y}{3} + \frac{2}{3}\right),\\
+    g_4((x, y)) &= \left(\frac{x}{3} + \frac{1}{3}, \frac{y}{3}\right),\\
+    g_5((x, y)) &= \left(\frac{x}{3} + \frac{1}{3}, \frac{y}{3} + \frac{2}{3}\right),\\
+    g_6((x, y)) &= \left(\frac{x}{3} + \frac{2}{3}, \frac{y}{3}\right),\\
+    g_7((x, y)) &= \left(\frac{x}{3} + \frac{2}{3}, \frac{y}{3} + \frac{1}{3}\right),\\
+    g_8((x, y)) &= \left(\frac{x}{3} + \frac{2}{3}, \frac{y}{3} + \frac{2}{3}\right),\\
+\end{align*}
+and therefore
+\begin{align*}
+    g_1(V) &= \left(0, \frac{1}{3}\right) \times \left(0, \frac{1}{3}\right),\\
+    g_2(V) &= \left(0, \frac{1}{3}\right) \times \left(\frac{1}{3}, \frac{2}{3}\right),\\
+    g_3(V) &= \left(0, \frac{1}{3}\right) \times \left(\frac{2}{3}, 1\right),\\
+    g_4(V) &= \left(\frac{1}{3}, \frac{2}{3}\right) \times \left(0, \frac{1}{3}\right),\\
+    g_5(V) &= \left(\frac{1}{3}, \frac{2}{3}\right) \times \left(\frac{2}{3}, 1\right),\\
+    g_6(V) &= \left(\frac{2}{3}, 1\right) \times \left(0, \frac{1}{3}\right),\\
+    g_7(V) &= \left(\frac{2}{3}, 1\right) \times \left(\frac{1}{3}, \frac{2}{3}\right),\\
+    g_8(V) &= \left(\frac{2}{3}, 1\right) \times \left(\frac{2}{3}, 1\right),\\
+\end{align*}
+and we can see they are pairwise disjoint and all subsets of \(V\). Furthermore, let \(g(E) = \bigcup_{i = 1}^{8} g_i(E)\), note that the point \(\left(\frac{1}{3}, \frac{1}{3}\right) \in V\), and also note that
+\[
+g_8((1, 1)) = (1, 1) \implies (1, 1) \in g^{(k)}([0, 1]^2),
+\]
+\[
+g_1((1, 1)) = \left(\frac{1}{3}, \frac{1}{3}\right),
+\]
+and therefore
+\[
+\left(\frac{1}{3}, \frac{1}{3} \in g^{(k)}([0, 1]^2)\right),
+\]
+and therefore \(\left(\frac{1}{3}, \frac{1}{3}\right) \in \square\), the Sierpinski Carpet. But \(\left(\frac{1}{3}, \frac{1}{3}\right) \in V\) as well, so \(V \cap C \supset \left\{\left(\frac{1}{3}, \frac{1}{3}\right)\right\}\), and therefore \(V \cap C \neq \emptyset\).
+
+However, it is impossible for such \(V \supset C\) to satisfy the SOSC. This is because if \(V \supset C\), then \((0, 1) \in V, (1, 1) \in V\). But notice
+\[
+g_4((0, 1)) = \left(\frac{1}{3}, \frac{1}{3}\right) = g_1((1, 1)),
+\]
+and therefore \(g_1(V) \cap g_4(V) \supset \left\{\left(\frac{1}{3}, \frac{1}{3}\right)\right\}\), and \(g_1(V) \cap g_4(V) \neq \emptyset\) which violates the pairwise disjoint condition of the OSC, hence the second part is impossible for the Sierpinski carpet.

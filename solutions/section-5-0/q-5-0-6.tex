@@ -1,1 +1,138 @@
-Please add the solution to solutions/section-5-0/q-5-0-6.tex.
+We show that \(a_3\) equals \(0.910411\) -- precisely
+\[\frac{7^{\frac{\log(3)}{\log(2)}}}{24}.\]
+
+This is done using this program, which brute-forces every combination of triangles to make the cover, finds the diameter, and computes the value of \(a_3\). Then it finds the minimum out of all these values and prints it out. This is extremely naive and would not work for \(a_4\).
+
+
+\begin{verbatim}
+#include <cmath>
+#include <vector>
+#include <set>
+#include <tuple>
+#include <algorithm>
+#include <iostream>
+#include <limits>
+
+using namespace std;
+using Point = pair<double, double>;
+using Triangle = vector<Point>;
+
+double root3 = sqrt(3.0);
+double s = log(3.0) / log(2.0);
+
+Point div(const Point& pt, double x) {
+    return {pt.first / x, pt.second / x};
+}
+
+Point add(const Point& pt1, const Point& pt2) {
+    return {pt1.first + pt2.first, pt1.second + pt2.second};
+}
+
+Point f0(const Point& pt) {
+    return div(pt, 2.0);
+}
+
+Point f1(const Point& pt) {
+    return add({0.5, 0.0}, div(pt, 2.0));
+}
+
+Point f2(const Point& pt) {
+    return add({0.25, root3 / 4.0}, div(pt, 2.0));
+}
+
+using Func = Point (*)(const Point&);
+
+vector<Func> funcs = {f0, f1, f2};
+
+Triangle f(int n, const Triangle& tri) {
+    Triangle result;
+    for (const auto& pt : tri) {
+        result.push_back(funcs[n](pt));
+    }
+    return result;
+}
+
+vector<Triangle> nexttri(const vector<Triangle>& tri) {
+    vector<Triangle> tri1;
+    for (const auto& t : tri) {
+        for (int i = 0; i < 3; ++i) {
+            tri1.push_back(f(i, t));
+        }
+    }
+    return tri1;
+}
+
+set<Point> nextpts(const set<Point>& pts) {
+    set<Point> pts1;
+    for (const auto& pt : pts) {
+        for (int i = 0; i < 3; ++i) {
+            pts1.insert(funcs[i](pt));
+        }
+    }
+    return pts1;
+}
+
+double dist(const Point& pt1, const Point& pt2) {
+    return sqrt(pow(pt1.first - pt2.first, 2)
+            + pow(pt1.second - pt2.second, 2));
+}
+
+double diameter(const set<Point>& pts) {
+    double diam = 0.0;
+    for (const auto& pt1 : pts) {
+        for (const auto& pt2 : pts) {
+            diam = max(diam, dist(pt1, pt2));
+        }
+    }
+    return diam;
+}
+
+int main() {
+    vector<Triangle> tri0 = {{{{0, 0}, {1, 0}, {0.5, root3 / 2}}}};
+    set<Point> pts0 = {{0, 0}, {1, 0}, {0.5, root3 / 2}};
+
+    auto tri1 = nexttri(tri0);
+    auto pts1 = nextpts(pts0);
+    int N = 3;
+
+    for (int i=0;i<N-1;++i){
+        tri1 = nexttri(tri1);
+        pts1 = nextpts(pts1);
+    }
+
+
+
+    double mina = numeric_limits<double>::max();
+
+    size_t numTriangles = tri1.size();
+
+    double dd = -1, nn = -1; // store exact values
+    for (size_t i = 1; i < (1u << numTriangles); ++i) {
+        
+        vector<Triangle> tri;
+        set<Point> pts;
+
+        for (size_t j = 0; j < numTriangles; ++j) {
+            if (i & (1u << j)) {
+                tri.push_back(tri1[j]);
+                for (const auto& pt : tri1[j]) {
+                    pts.insert(pt);
+                }
+            }
+        }
+
+        double d = diameter(pts);
+        double n = static_cast<double>(tri.size());
+        double a = pow(d, s) / (n / pow(3.0, N));
+        if (a < mina) {
+            mina = a;
+            dd = d;
+            nn = n;
+        }
+    }
+
+    cout << mina << endl;
+    cout << dd << " " << nn << endl;
+    return 0;
+}
+\end{verbatim}

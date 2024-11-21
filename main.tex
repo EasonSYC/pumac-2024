@@ -1,5 +1,4 @@
 \documentclass[11pt]{article}
-\usepackage[utf8]{inputenc}
 \usepackage{geometry}
 \geometry{a4paper}
 
@@ -19,29 +18,6 @@
 \usepackage{textcomp}
 \usepackage{marginnote}
 \usepackage{color}
-\usepackage{tikz}
-\usepackage[font=small,labelfont=bf]{caption}
-\usepackage[super]{nth}
-\usepackage[framemethod=TikZ]{mdframed}
-\mdfdefinestyle{MyFrame}{%
-    linecolor=black!75!white,
-    outerlinewidth=2pt,
-    roundcorner=20pt,
-    innertopmargin=\baselineskip,
-    innerbottommargin=\baselineskip,
-    innerrightmargin=20pt,
-    innerleftmargin=20pt,
-    backgroundcolor=white}
-\definecolor{g3}{gray}{0.9}
-\mdfdefinestyle{prob}{%
-    linecolor=black!75!white,
-    outerlinewidth=2pt,
-    roundcorner=5pt,
-    %innertopmargin=\baselineskip,
-    %innerbottommargin=\baselineskip,
-    innerrightmargin=20pt,
-    innerleftmargin=20pt,
-    backgroundcolor=g3}
 
 \usepackage{fancyhdr}
 \usepackage{float}
@@ -50,12 +26,6 @@
 \usepackage{wrapfig}
 
 \mdfsetup{nobreak=true}
-
-%\oddsidemargin=.2in
-%\evensidemargin=.2in
-%\topmargin=-.5in
-%\textheight=8.5in
-%\textwidth=6in
 
 \oddsidemargin=.2in
 \evensidemargin=.2in
@@ -67,98 +37,24 @@
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
 
-\fancypagestyle{firststyle}{
-\fancyhead[L]{\includegraphics[height=35pt, width= 202 pt, keepaspectratio]{PUMaC_logo_color.png}}
-\fancyhead[R]{\includegraphics[height=50pt, width=40 pt]{PU_Shield.png}}}
-
-\fancypagestyle{plain}{
-\lhead{PUMaC 2020 Power Round}
-\lhead{\includegraphics[height=17.5pt, width= 101 pt, keepaspectratio]{PUMaC_logo_color.png}}
-\rhead{\includegraphics[height=20pt, width=20 pt]{PU_Shield.png}}
-\cfoot{}
-
-\crefname{thrm}{}{Theorem}
-\crefname{defn}{}{Definiton}
-
-\renewcommand{\headrulewidth}{0.2pt}}
-\newcommand{\half}{\frac{1}{2}}
-\newcommand{\bbpr}[2]{\mathbb{#1}[#2]}
-\newcommand{\E}{\mathbb{E}}
-\newcommand{\tr}{\text{tr}}
-\newcommand{\aaa}{\text{\textbf{a}}}
-\newcommand{\bb}{\text{\textbf{b}}}
-\newcommand{\cc}{\text{\textbf{c}}}
-\newcommand{\ee}{\text{\textbf{e}}}
-\newcommand{\hh}{\text{\textbf{h}}}
-\newcommand{\ii}{\text{\textbf{i}}}
-\newcommand{\jj}{\text{\textbf{j}}}
-\newcommand{\mm}{\text{\textbf{m}}}
-\newcommand{\vv}{\text{\textbf{v}}}
-\newcommand{\ww}{\text{\textbf{w}}}
-\newcommand{\xx}{\text{\textbf{x}}}
-\newcommand{\zz}{\text{\textbf{z}}}
-\newcommand{\yy}{\text{\textbf{y}}}
-\newcommand{\Span}{\text{span}\,}
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\CC}{\mathcal{C}}
+\renewcommand{\headrulewidth}{0.2pt}
 \newcommand{\N}{\mathbb{N}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
 \newcommand{\p}{\mathcal{P}}
-\newcommand{\del}{\Delta}
-\newcommand{\eps}{\varepsilon}
-\newcommand{\sip}[2]{\left\langle#1,#2\right\rangle}
-\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
-\newcommand{\rhat}{\hat{r}}
-\newcommand{\inv}{^{-1}}
-\newcommand{\nye}[1]{\tilde{#1}}
-\newcommand{\gl}{\mathfrak{gl}}
-\newcommand{\Sl}{\mathfrak{sl}}
-\newcommand{\Sp}{\mathfrak{sp}}
-\newcommand{\So}{\mathfrak{so}}
-\newcommand{\ad}{\text{ad}\,}
 \newcommand{\h}{\mathcal{H}}
 
 \renewcommand{\epsilon}{\varepsilon}
 
 \newcommand*\sierpinski{\vcenter{\hbox{\includegraphics[width=1em]{SierpinskiTriangleIcon.png}}}}
 
-
-
-\DeclareMathOperator{\im}{im}
-
-\newtheorem{theorem}[subsubsection]{Theorem}
-\newtheorem{lemma}[subsubsection]{Lemma}
-\newtheorem{prop}[subsubsection]{Proposition}
-\newtheorem{cor}[subsubsection]{Corollary}
-\theoremstyle{definition}
-\newtheorem{defn}[subsubsection]{Definition}
-\newtheorem*{example}{Example}
-\theoremstyle{remark}
-\newtheorem*{rmk}{Remark}
-
-\newtheoremstyle{problem}{-\topsep}{}{\normalfont}{}{\bfseries}{.}{.5em}{}
-\theoremstyle{problem}
-\newmdtheoremenv{prob}{Problem}[subsection]
-% \newenvironment{prob}{\begin{mdframed}\begin{pro}}
-%   {\end{pro}\end{mdframed}}
-
-
-\title{PUMaC 2024 Power Round: \\ Measures and Fractals}
-\author{Colby Riley}
-\date{Fall 2024}
-
-\setcounter{section}{0}
-
-\DeclareMathOperator{\Var}{Var}
-\DeclareMathOperator{\ex}{ex}
+\newcommand{\teamno}{213}
 
 \begin{document}
-
-
 \thispagestyle{empty}
-\noindent \huge{Team Number:} \underline{213\phantom{}}
+\noindent \huge{Team Number:} \underline{\teamno\phantom{}}
 
 \vspace{.5cm}
 \noindent \huge{PUMaC 2024 Power Round Cover Sheet}
@@ -198,23 +94,30 @@ Problem Number & Points & Attempted?\\\hline
 \begin{tabular}{|c|c|c|}\hline
 Problem Number & Points & Attempted?\\\hline
 4.2.1 & 10 & Yes \\\hline
-4.2.2 & 10 & \\\hline
+4.2.2 & 10 & Yes \\\hline
 4.2.3 & 5 & Yes \\\hline
-4.2.4 & 5 & \\\hline
-4.2.5 & 20 & \\\hline
-4.2.6 & 15 & \\\hline
-5.0.1 & 10 & \\\hline
-5.0.2 & 5 & \\\hline
-5.0.3 & 5 & \\\hline
-5.0.4 & 10 & \\\hline
-5.0.5 & 25 & \\\hline
-5.0.6 & 40 & \\\hline
+4.2.4 & 5 & Yes \\\hline
+4.2.5 & 20 & Yes \\\hline
+4.2.6 & 15 & Yes \\\hline
+5.0.1 & 10 & Yes \\\hline
+5.0.2 & 5 & Yes \\\hline
+5.0.3 & 5 & Yes \\\hline
+5.0.4 & 10 & Yes \\\hline
+5.0.5 & 25 & Yes \\\hline
+5.0.6 & 40 & Yes \\\hline
 5.0.7 & 50 & \\\hline
 \end{tabular}
 \end{center}
 
 \newpage
+
+
+\pagestyle{fancy}
+\lhead{Team Number: \textbf{\teamno}}
+\rhead{\textbf{\leftmark}}
+
 \tableofcontents
+
 \newpage
 
 \section{Problem 2.0.1}

@@ -1,1 +1,54 @@
-Please add the solution to solutions/section-4-2/q-4-2-6.tex.
+Recall from 4.0.4 that the IFS for the Sierpinski carpet \((f_1, \ldots, f_8)\) on \(\R^2 \to \R^2\):
+\begin{align*}
+    f_1((x, y)) &= \left(\frac{1}{3}x, \frac{1}{3}y\right),\\
+    f_2((x, y)) &= \left(\frac{1}{3}x + \frac{1}{3}, \frac{1}{3}y\right),\\
+    f_3((x, y)) &= \left(\frac{1}{3}x + \frac{2}{3}, \frac{1}{3}y\right),\\
+    f_4((x, y)) &= \left(\frac{1}{3}x, \frac{1}{3}y + \frac{1}{3}\right),\\
+    f_5((x, y)) &= \left(\frac{1}{3}x + \frac{2}{3}, \frac{1}{3}y + \frac{1}{3}\right),\\
+    f_6((x, y)) &= \left(\frac{1}{3}x, \frac{1}{3}y + \frac{2}{3}\right),\\
+    f_7((x, y)) &= \left(\frac{1}{3}x + \frac{1}{3}, \frac{1}{3}y  + \frac{2}{3}\right),\\
+    f_8((x, y)) &= \left(\frac{1}{3}x + \frac{2}{3}, \frac{1}{3}y  + \frac{2}{3}\right).
+\end{align*}
+
+Denote \(f(X) = \bigcup_{i = 1}^{8} f_i(X)\), \(\square_0 = [0, 1]^2\) and \(\square_k = f^{(k)}(\square_0)\), and the Sierpinski carpet as \(\square\).
+
+The Sierpinski carpet's IFS satisfies the OSC: notice that the open unit square \(U = (0, 1)^2\) satisfies the OSC by
+\begin{align*}
+    f_1(U) &= \left(0, \frac{1}{3}\right) \times \left(0, \frac{1}{3}\right)\\
+    f_2(U) &= \left(\frac{1}{3}, \frac{2}{3}\right) \times \left(0, \frac{1}{3}\right)\\
+    f_3(U) &= \left(\frac{2}{3}, 1\right) \times \left(0, \frac{1}{3}\right)\\
+    f_4(U) &= \left(0, \frac{1}{3}\right) \times \left(\frac{1}{3}, \frac{2}{3}\right)\\
+    f_5(U) &= \left(\frac{2}{3}, 1\right) \times \left(\frac{1}{3}, \frac{2}{3}\right)\\
+    f_6(U) &= \left(0, \frac{1}{3}\right) \times \left(\frac{2}{3}, 1\right)\\
+    f_7(U) &= \left(\frac{1}{3}, \frac{2}{3}\right) \times \left(\frac{2}{3}, 1\right)\\
+    f_8(U) &= \left(\frac{2}{3}, 1\right) \times \left(\frac{2}{3}, 1\right)\\.
+\end{align*}
+and notice they are all disjoint subsets of \(U\). Therefore, the dimension of \(\square\), \(s\), must satisfy that
+\[
+8 \cdot 3^{-s} = 1 \implies s = \frac{\log 8}{\log 3}.
+\]
+
+Let \(\square\) be the Sierpinski carpet, and denote \(S_k\) as a square generated in the \(k\)-th iteration of the process, for example, \(S_0 = (0, 1)^2\), note that \(S_k\) has side length \(3^{-k}\) and there are \(8^{k}\) such squares in the process. Now, we define the measure \(\mu\):
+\[
+\mu(S_k \cap \square) = 8^{-k},
+\]
+and for any \(U \subset \square\) a subset of the Sierpinski carpet, we can approximate it using some smaller squares:
+\[
+\mu(U) = \inf\left\{\sum_{i = 1}^{+\infty} \mu(E_i): U \subset \bigcup_{i = 1}^{+\infty} E_i, E_i \text{ is some square in the process}\right\}.
+\]
+
+Assume that \(|U| < \sqrt{1}\). There must therefore exist some \(k\) such that
+\(3^{-(k + 1)} \leq |U| < 3^{-k}\) for some integer \(k\). Then, \(U \subset \left({S_k}_1 \cup {S_k}_2 \cup {S_k}_3 \cup {S_k}_4\right) \cap \square\) where \({S_k}_i\) is one of the squares in the \(k\)-th step of the construction, i.e., \(U\) can only be situated in at most 4 squares at the same time. Therefore,
+\begin{align*}
+    \mu(U) &\leq 4 \cdot 8^{-k}\\
+    &= 4 \cdot \left(3^s\right)^{-k}\\
+    &= 4 \cdot \left(3^{-k}\right)^s\\
+    &= 4 \cdot 3^s \cdot \left(3^{-k - 1}\right)^s\\
+    &\leq 4 \cdot 8 \cdot |U|^s\\
+    &= 32 \cdot |U|^s.
+\end{align*}
+
+This means the hypothesis for the mass distribution principle is true for \(\epsilon = 1\) and \(c = 32\). Therefore, from mass distribution principle, we have
+\[
+\h^s(\square) \geq \frac{1}{32}.
+\]

@@ -1,1 +1,29 @@
-Please add the solution to solutions/section-4-2/q-4-2-2.tex.
+We alter slightly the definition of the natural measure. Specifically, we assign an uneven amount of measure on the left interval created and the right interval created each step. Let \(0 < p < 1\) such that \(p \cdot 3^s > 1\) where \(s = \log 2 / \log 3\), i.e., \(p > \frac{1}{2}\). Let the IFS of the Cantor set be \((f_1, f_2)\) where \(f_1(x) = \frac{1}{3}x\) and \(f_2(x) = \frac{1}{3} x + \frac{2}{3}\), and we denote \(f_{i_1, i_2, \ldots, i_m} (E)\) to be \(f_{i_1}(f_{i_2}(\ldots(f_{i_m}(E))))\), where each \(i_k \in \{1, 2\}\). Let \(t_1 = p, t_2 = 1 - p\), and define the measure \(\mu\) such that
+\[
+\mu\left(f_{i_1, i_2, \ldots, i_m} (C)\right) = \mu\left(f_{i_1, i_2, \ldots, i_m} ([0, 1]) \cap C\right) = \prod_{j = 1}^{m} t_{i_j} = t_{i_1} t_{i_2} \ldots t_{i_m}.
+\]
+
+This means every time a left interval is created, it takes up \(p\) of the measure of the original interval, with the right interval taking up \(1 - p\) of the measure.
+
+Now, we can generalise this for any \(U \subset C\) simply using the similar concept as before, by approximating it with smaller and smaller intervals \(\cap C\):
+\[
+\mu(U) = \inf\left\{\sum_{i = 1}^{\mu(E_i)} : U \subset \bigcup_{i} E_i, E_i \text{ is an interval in the construction}\right\}.
+\]
+
+It is not difficult to see the non-negativity and the measure of the empty set being zero from the definition. The countable additivity is also true: consider disjoint Borel subsets \(\{E_i\}\) of \(C\), we will have \(\mu (\bigcup E_i) = \sum \mu(E_i)\) since the intervals are either disjoint or contains one-another (and we obviously don't want them to contain one-another to get closer to the \(\inf\) since simply removing the smaller one won't change the validity of the cover), and so they are disjoint, and so this holds.
+
+Now consider \(\frac{\mu(U)}{|U|^s}\) for \(U = f_{1, 1, \ldots, 1}(C)\) where there are \(n\) 1s. It's not difficult to see that
+\[
+|U| = \left(\frac{1}{3}\right)^n,
+\]
+and that
+\[
+\mu(U) = p^n.
+\]
+
+Notice that
+\[
+\frac{\mu(U)}{|U|^s} = \frac{p^n}{3^{-sn}} = (2p)^n.
+\]
+
+Notice that this value decreases as \(p\) increases. For any \(\epsilon > 0\), we can find \(n\) that is sufficiently big enough such that \(|U| = 3^{-n} > \epsilon\), and for any \(c > 0\), we can further increase \(n\) to be big enough such that \(\mu(U) / |U|^s = (2p)^n > c\), since \(2p > 1\) and \((2p)^n\) is increasing with respect to \(n\). This means that for all \(c, \epsilon > 0\), we can find some \(U \subset C, |U| \leq \epsilon\), such that \(\mu (U) > c|U|^s\) for this measure \(\mu\) that we just constructed, as desired.

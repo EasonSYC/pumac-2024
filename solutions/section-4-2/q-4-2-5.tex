@@ -1,1 +1,42 @@
-Please add the solution to solutions/section-4-2/q-4-2-5.tex.
+Consider the following \(2^{n - 1}\) contractions each with contraction ration \(2^{-n}\) forming an IFS for some \(n \in N, n \geq 2\):
+\begin{align*}
+    (f_n)_1 (x) &= \frac{1}{2^n}(x),\\
+    (f_n)_2 (x) &= \frac{1}{2^n}(x) + \frac{1}{2^n},\\
+    (f_n)_3 (x) &= \frac{1}{2^n}(x) + \frac{2}{2^n},\\
+    \vdots &= \vdots\\
+    (f_n)_{2^{n-1}}(x) &= \frac{1}{2^n}(x) + \frac{2^{n-1} - 1}{2^n}.
+\end{align*}
+
+This satisfies the open set condition for \(U = (0, 1)\), since
+\begin{align*}
+    (f_n)_1 (U) &= \left(0, \frac{1}{2^n}\right),\\
+    (f_n)_2 (U) &= \left(\frac{1}{2^n}, \frac{2}{2^n}\right),\\
+    (f_n)_3 (U) &= \left(\frac{2}{2^n}, \frac{3}{2^n}\right),\\
+    \vdots &= \vdots\\
+    (f_n)_{2^{n-1}}(U) &= \left( \frac{2^{n-1} - 1}{2^n}, \frac{2^{n-1}}{2^n}\right),
+\end{align*}
+which are obviously pairwise disjoint and all subsets of \(U\).
+
+Let its attractor be \(E_n\). We will see that its dimension \(s_n\) satisfies that
+\[
+2^{n - 1} \cdot \left(2^{-n}\right)^s = 1 \iff 2^{n - 1 - sn} = 1 \iff s = \frac{n - 1}{n}.
+\]
+
+Now, consider the set
+\[
+E = \bigcup_{i = 2}^{n} E_n \subset \R
+\]
+
+Since \(E \subset \R = \R^1\), we know the Hausdorff dimension of \(E \leq 1\).
+
+Consider \(\h^1(E)\). By the countable sub-additivity property of a measure, we can see
+\begin{align*}
+\h^1(E) &= \h^1 \left(\bigcup_{i = 2}^{+\infty} E_n\right)\\
+&\leq \sum_{i = 2}^{+\infty} \h^1(E_n).
+\end{align*}
+
+But since each \(E_n\) has a Hausdorff dimension of \(\frac{n - 1}{n} < 1\), by problem 2.1.7 we must have \(\h^1(E_n) = 0\).
+
+Therefore, \(\h^1(E) = 0\), which shows the Hausdorff dimension of \(E\) must be \(\geq\) 1.
+
+This shows that \(E\) has Hausdorff dimension 1 but have \(\h^1(E) = 0\).
