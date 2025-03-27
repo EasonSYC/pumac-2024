@@ -1,4 +1,4 @@
-#### Princeton University Mathematical Challenge 2024 Power Round
+### Princeton University Mathematical Challenge 2024 Power Round
 
 Our attempt to the question set.
 
